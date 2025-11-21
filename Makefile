@@ -38,6 +38,9 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(MLX_LIB)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(MLX_LIB) $(MLX_LFLAGS) -o $(NAME)
+## vv ELIMINAR ANTES DE ENTREGAR vv
+	$(RM) $(OBJS)
+	$(MAKE) -C $(MLX_DIR) clean || true
 
 $(MLX_LIB):
 	$(MAKE) -C $(MLX_DIR)
