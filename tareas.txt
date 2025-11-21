@@ -1,0 +1,6 @@
+1. Makefile
+2. buscar texturas
+3. validator de mapa
+4. crear imgs
+5. aprender raycasting
+6. manejo de errores
