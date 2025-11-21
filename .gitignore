@@ -1,3 +1,4 @@
 .DS_Store
 minilibx/libmlx.a
 minilibx/*.o
+mlx_mac
