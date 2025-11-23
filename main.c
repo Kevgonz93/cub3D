@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:13:18 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/21 21:56:36 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/23 17:19:05 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub3d.h"
+
+static int  is_cub(char *arg)
+{
+    int len;
+
+    len = ft_strlen(arg);
+    if (arg[len - 4] == '.' && arg[len - 3] == 'c' && arg[len - 2] == 'u'
+            && arg[len - 1] == 'b')
+        return (1);
+    return (0);
+}
 
 static int	init_mlx(t_game *game)
 {
@@ -50,11 +61,14 @@ static void	init_hooks(t_game *game)
 
 int	main(int argc, char **argv)
 {
+	(void)argv;
 	t_game	game;
 
 	// 	1. Validar argumentos
 	if (argc != 2)
 		return (error("Usage: ./cub3D <map.cub>"));
+	if (!is_cub(argv[1]))
+		return (error("Map must have .cub format"));
 
 	//   2. Inicializar estructura
 	init_game(&game);

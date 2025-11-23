@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/21 21:36:51 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/23 17:24:52 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <string.h>
 # include <errno.h>
 
-# include "mlx.h"
+# include "../minilibx/mlx.h"
 # include "src.h"
 
 // ------------------------------------------------------
