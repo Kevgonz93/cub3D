@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inittial_settings.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:12:43 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/21 22:12:44 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/23 19:39:40 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,3 +66,4 @@ void	init_game(t_game *game)
 		key++;
 	}
 }
+
