@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:12:43 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/23 15:58:31 by akwadran         ###   ########.fr       */
+/*   Updated: 2025/11/23 19:39:40 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,3 @@ void	init_game(t_game *game)
 	}
 }
 
-int		parse_file(char *path, t_game *game)
-{
-	// por hacer
-	(void)path;
-	(void)game;
-	return (1);
-}
