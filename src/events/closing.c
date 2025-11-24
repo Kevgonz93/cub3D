@@ -6,11 +6,11 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 17:04:11 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/23 17:04:17 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/24 14:45:04 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/src.h"
+#include "../../includes/src.h"
 
 int	game_exit(t_game *game, int status)
 {

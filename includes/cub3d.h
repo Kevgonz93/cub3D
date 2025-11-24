@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 14:16:26 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/24 14:57:47 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <errno.h>
 
 # include "mlx.h"
-# include "src.h"
 
 // ------------------------------------------------------
 //                     CONSTANTES
@@ -94,31 +93,5 @@ typedef struct s_game
 	t_player	player;		// Información del jugador
 	int			keys[256];	// Estado de las teclas
 }	t_game;
-
-// ------------------------------------------------------
-//                 PROTOTIPOS (mínimos)
-// ------------------------------------------------------
-
-// INITIAL_SETTINGS.C
-void	init_game(t_game *game);
-
-
-// FREE_SRC.C
-void	free_img(t_game *game);
-void	free_config(t_game *game);
-int		free_game(t_game *game, int exit_code);
-
-// ERROR_HANDLER.C
-int		error(char *msg);
-int		error_sys(char *msg);
-
-// MAIN.C
-int		parse_file(char *path, t_game *game);
-int		key_press(int keycode, t_game *game);
-int		key_release(int keycode, t_game *game);
-int		game_exit(t_game *game, int status);
-int		close_window(t_game *game);
-int		render_frame(t_game *game);
-
 
 #endif
