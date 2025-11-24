@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/21 21:23:58 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/21 21:36:20 by kegonza          ###   ########.fr       */
+/*   Created: 2025/11/23 17:05:14 by kegonza           #+#    #+#             */
+/*   Updated: 2025/11/23 17:05:20 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3d.h"
+#include "../../include/src.h"
 
-int	error(char *msg)
+int	parse_file(char *filename, t_game *game)
 {
-	write(2, "Error\n", 6);
-	write(2, msg, ft_strlen((char *)msg));
-	write(2, "\n", 1);
-	return (1);
-}
-
-int	error_sys(char *context)
-{
-	char	*sys_msg;
-
-	sys_msg = strerror(errno);
-	write(2, "Error\n", 6);
-	write(2, context, ft_strlen(context));
-	write(2, ": ", 2);
-	write(2, sys_msg, ft_strlen(sys_msg));
-	write(2, "\n", 1);
-	return (1);
+	(void)filename;
+	(void)game;
+	return (0);
 }

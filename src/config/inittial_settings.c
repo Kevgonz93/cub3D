@@ -6,11 +6,11 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:12:43 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/21 22:12:44 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/23 17:11:03 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3d.h"
+#include "../../include/src.h"
 
 void	init_img(t_img *img)
 {

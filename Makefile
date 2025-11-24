@@ -1,52 +1,56 @@
-NAME := cub3D
+NAME    := cub3D
 
-CC := cc
-CFLAGS := -Wall -Wextra -Werror
+CC      := cc
+CFLAGS  := -Wall -Wextra -Werror
 
-OS = $(shell uname)
+OS      := $(shell uname)
 
 # ==========================
 # MiniLibX per-OS selection
 # ==========================
 
 ifeq ($(OS), Darwin)
-	MLX_DIR   = minilibx
-	MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-	X11_FLAGS = -I/opt/X11/include -L/opt/X11/lib -lX11 -lXext
+	MLX_DIR   := minilibx/macos
+	MLX_FLAGS := -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+	X11_FLAGS :=
 else
-	MLX_DIR   = minilibx
-	MLX_FLAGS = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm -lbsd
-	X11_FLAGS =
+	MLX_DIR   := minilibx/linux
+	MLX_FLAGS := -L$(MLX_DIR) -lmlx -lX11 -lXext -lm -lbsd
+	X11_FLAGS :=
 endif
 
+INCLUDES := -I$(MLX_DIR) -Iinclude
+
 SRCS := $(wildcard src/*.c) \
-		$(wildcard src/utils/*.c) \
-		$(wildcard src/rendering/*.c) \
-		$(wildcard src/parsing/*.c) \
-		$(wildcard src/events/*.c) \
-		$(wildcard *.c)
+        $(wildcard src/utils/*.c) \
+        $(wildcard src/rendering/*.c) \
+        $(wildcard src/parsing/*.c) \
+        $(wildcard src/events/*.c) \
+		$(wildcard src/config/*.c) \
+        $(wildcard *.c)
+
 OBJS := $(SRCS:.c=.o)
 
-RM := rm -f
+RM   := rm -f
+
+# ==========================
+# Rules
+# ==========================
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C $(MLX_DIR)
 	$(CC) $(CFLAGS) $(OBJS) $(X11_FLAGS) $(MLX_FLAGS) -o $(NAME)
-## vv ELIMINAR ANTES DE ENTREGAR vv
-	$(RM) $(OBJS)
-	$(MAKE) -C $(MLX_DIR) clean || true
-
-$(MLX_LIB):
-	$(MAKE) -C $(MLX_DIR)
+	## vv ELIMINAR ANTES DE ENTREGAR vv
+	make clean
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
-	$(MAKE) -C $(MLX_DIR) clean || true
+	-$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
 	$(RM) $(NAME)

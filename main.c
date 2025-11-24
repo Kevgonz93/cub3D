@@ -6,11 +6,12 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:13:18 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/21 21:56:36 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/23 17:05:13 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub3d.h"
+
 
 static int	init_mlx(t_game *game)
 {
@@ -52,25 +53,34 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
+	printf("validating arguments...\n");
 	// 	1. Validar argumentos
 	if (argc != 2)
 		return (error("Usage: ./cub3D <map.cub>"));
 
+	printf("initializing game...\n");
 	//   2. Inicializar estructura
 	init_game(&game);
 
+	printf("parsing file...\n");
 	//   3. Parsear archivo .cub
 	if (parse_file(argv[1], &game) == -1)
 		return (free_game(&game, 1));
 
+	printf("initializing MLX...\n");
 	//	4. Inicializar MLX
 	if (init_mlx(&game) != 0)
 		return (1);
 
+	printf("registering hooks...\n");
 	//   5. Registrar hooks
 	init_hooks(&game);
 
+	printf("starting MLX loop...\n");
 	//   6. Loop de MLX
 	mlx_loop(game.mlx);
+
+	printf("exiting game...\n");
+	//   7. Free and exit
 	return (free_game(&game, 0));
 }
