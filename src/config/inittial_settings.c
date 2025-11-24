@@ -6,11 +6,11 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:12:43 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 14:18:13 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/24 15:03:27 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/src.h"
+#include "../../includes/src.h"
 
 void	init_img(t_img *img)
 {

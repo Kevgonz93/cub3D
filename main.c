@@ -6,22 +6,21 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:13:18 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 14:17:27 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/24 15:05:11 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3d.h"
+#include "includes/src.h"
 
-
-static int  is_cub(char *arg)
+static int	is_cub(char *arg)
 {
-    int len;
+	int	len;
 
-    len = ft_strlen(arg);
-    if (arg[len - 4] == '.' && arg[len - 3] == 'c' && arg[len - 2] == 'u'
-            && arg[len - 1] == 'b')
-        return (1);
-    return (0);
+	len = ft_strlen(arg);
+	if (arg[len - 4] == '.' && arg[len - 3] == 'c' && arg[len - 2] == 'u'
+		&& arg[len - 1] == 'b')
+		return (1);
+	return (0);
 }
 
 static int	init_mlx(t_game *game)

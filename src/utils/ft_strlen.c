@@ -6,11 +6,11 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:24:54 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/23 17:02:47 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/24 14:40:33 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/src.h"
+#include "../../includes/src.h"
 
 size_t	ft_strlen(char *s)
 {

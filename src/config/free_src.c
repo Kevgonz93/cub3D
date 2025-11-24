@@ -6,11 +6,11 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:52:28 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/23 17:10:59 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/24 15:03:17 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/src.h"
+#include "../../includes/src.h"
 
 void	free_img(t_game *game)
 {
@@ -22,46 +22,48 @@ void	free_img(t_game *game)
 	}
 }
 
-void	free_config(t_game *game)
+static void	free_map(t_map *map)
 {
 	int	i;
 
-	if (game->config.no_tex)
-	{
-		free(game->config.no_tex);
-		game->config.no_tex = NULL;
-	}
-	if (game->config.so_tex)
-	{
-		free(game->config.so_tex);
-		game->config.so_tex = NULL;
-	}
-	if (game->config.we_tex)
-	{
-		free(game->config.we_tex);
-		game->config.we_tex = NULL;
-	}
-	if (game->config.ea_tex)
-	{
-		free(game->config.ea_tex);
-		game->config.ea_tex = NULL;
-	}
-	if (game->config.map)
+	if (map)
 	{
 		i = 0;
-		if (game->config.map->grid)
+		if (map->grid)
 		{
-			while (i < game->config.map->height)
+			while (i < map->height)
 			{
-				if (game->config.map->grid[i])
-					free(game->config.map->grid[i]);
+				if (map->grid[i])
+					free(map->grid[i]);
 				i++;
 			}
-			free(game->config.map->grid);
+			free(map->grid);
 		}
-		free(game->config.map);
-		game->config.map = NULL;
+		free(map);
+		map = NULL;
 	}
+}
+
+void	free_config(t_game *game)
+{
+	if (game->config.no_tex)
+		free(game->config.no_tex);
+	if (game->config.so_tex)
+		free(game->config.so_tex);
+	if (game->config.we_tex)
+		free(game->config.we_tex);
+	if (game->config.ea_tex)
+		free(game->config.ea_tex);
+	if (game->config.map)
+	{
+		free_map(game->config.map);
+		free(game->config.map);
+	}
+	game->config.no_tex = NULL;
+	game->config.so_tex = NULL;
+	game->config.we_tex = NULL;
+	game->config.ea_tex = NULL;
+	game->config.map = NULL;
 }
 
 // void	free_player(t_game *game)

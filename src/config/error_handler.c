@@ -6,11 +6,11 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:23:58 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/23 17:10:56 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/24 14:45:19 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/src.h"
+#include "../../includes/src.h"
 
 int	error(char *msg)
 {

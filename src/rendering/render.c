@@ -6,11 +6,11 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 17:04:44 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 14:07:04 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/24 14:41:12 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/src.h"
+#include "../../includes/src.h"
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
