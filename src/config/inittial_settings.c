@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   inittial_settings.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:12:43 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/23 19:39:40 by akwadran         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:18:13 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3d.h"
+#include "../../include/src.h"
 
 void	init_img(t_img *img)
 {

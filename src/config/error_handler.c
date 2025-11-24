@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   error_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/21 21:24:54 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/21 21:26:50 by kegonza          ###   ########.fr       */
+/*   Created: 2025/11/21 21:23:58 by kegonza           #+#    #+#             */
+/*   Updated: 2025/11/23 17:10:56 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/src.h"
+#include "../../include/src.h"
 
-size_t	ft_strlen(char *s)
+int	error(char *msg)
 {
-	size_t	len;
+	write(2, "Error\n", 6);
+	write(2, msg, ft_strlen((char *)msg));
+	write(2, "\n", 1);
+	return (1);
+}
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	return (len);
+int	error_sys(char *context)
+{
+	char	*sys_msg;
+
+	sys_msg = strerror(errno);
+	write(2, "Error\n", 6);
+	write(2, context, ft_strlen(context));
+	write(2, ": ", 2);
+	write(2, sys_msg, ft_strlen(sys_msg));
+	write(2, "\n", 1);
+	return (1);
 }

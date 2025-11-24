@@ -2,4 +2,5 @@
 minilibx/libmlx.a
 minilibx/*.o
 mlx_mac
-.vscode
+.vscode/
+cub3D
