@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 14:57:47 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/29 02:32:15 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdio.h>
 # include <string.h>
 # include <errno.h>
+# include <stdbool.h>
+# include <limits.h>
 
 # include "mlx.h"
 

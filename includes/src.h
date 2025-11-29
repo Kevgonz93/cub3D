@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   src.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 14:49:43 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/29 02:46:53 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,29 @@
 // ------------------------------------------------------
 
 // FT_STRLEN.C
-size_t	ft_strlen(char *s);
+size_t	ft_strlen(const char *s);
+// FT_STRDUP.C
+char	*ft_strdup(const char *s);
+// FT_STRJOIN.C
+char	*ft_strjoin(char *s1, const char *s2);
+// FT_SUBSTR.C
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+// FT_STRLCPY.C
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+// GET_NEXT_LINE.C
+char	*get_next_line(int fd);
+// FREE_ARRAY.C
+void	free_array(char **array);
+// FT_STRCMP.C
+int	ft_strcmp(const char *s1, const char *s2);
+// FT_ISSPACE.C
+int	ft_isspace(int c);
+// FT_SPLIT.C
+char	**ft_split(char const *s, char c);
+// FT_ISDIGIT.C
+int	ft_isdigit(int c);
+// FT_ATOI.C
+int	ft_atoi(const char *nptr);
 
 // ------------------------------------------------------
 // 							CONFIG
@@ -60,6 +82,13 @@ int		key_release(int keycode, t_game *game);
 // PARSE_FILE.C
 int		parse_file(char *file, t_game *game);
 
+// BUFFER.C
+char	**get_lines(char *file);
+
+// TEXTURES.C
+int	get_tex(char *line, t_game *game);
+int	get_color(char *line, t_game *game);
+
 // ------------------------------------------------------
 // 							RENDERING
 // ------------------------------------------------------
@@ -67,4 +96,11 @@ int		parse_file(char *file, t_game *game);
 // RENDER.C
 int		render_frame(t_game *game);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
+// ------------------------------------------------------
+// 							DEBUG
+// ------------------------------------------------------
+
+void	print_config(t_config *config);
+
 #endif
