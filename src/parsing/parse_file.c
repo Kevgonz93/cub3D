@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:42:07 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/29 02:45:59 by akwadran         ###   ########.fr       */
+/*   Updated: 2025/11/30 18:43:54 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static bool	all_textures_found(t_game *game)
 {
 	if (game->config.no_tex && game->config.so_tex && game->config.we_tex
-		&& game->config.ea_tex && game->config.floor_color
-		&& game->config.ceil_color)
+		&& game->config.ea_tex && game->config.floor_color > 0
+		&& game->config.ceil_color > 0)
 		return (1);
 	return (0);
 }
@@ -36,17 +36,28 @@ static int	parse_textures(char **lines, t_game *game, int *map_index)
 		else if (!strncmp(lines[i], "F", 1) || !strncmp(lines[i], "C", 1))
 			get_color(lines[i], game);
 		else
-		{
-			// err: unexpected line
-			return (1);
-		}
+			return (error("Unexpected line"));
 	}
 	*map_index = i;
 	return (0);
 }
 
-static int	parse_map()
+static int	parse_map(char **lines, t_game *game, int map_index)
 {
+	int	i;
+	int width;
+
+	i = map_index;
+	width = 0;
+	while (!strcmp(lines[i], "\n"))
+		i++;
+	map_index = i;
+	
+	while (lines[i])
+	{
+		if (ft_strlen(lines[i]) > width)
+			width = ft_strlen(lines[i]);
+	}
 	return (0);
 }
 
@@ -60,31 +71,19 @@ int	parse_file(char *file, t_game *game)
 	lines = get_lines(file);
 	if (!lines)
 		return (error("Malloc failed"));
+	print_array(lines); // QUITAR
 	if (parse_textures(lines, game, &map_index))
 	{
-		//err
 		free_array(lines);
 		return (1);
 	}
-	if (parse_map())
+	if (parse_map(lines, game, map_index))
 	{
 		//err
 		free_array(lines);
 		return (1);
 	}
-
-    
-
-    /*
-	game->config.no_tex;
-    game->config.so_tex;
-    game->config.we_tex;
-    game->config.ea_tex;
-    game->config.floor_color;
-    game->config.ceil_color;
-    game->config.map;
-    */
-	printf("error?\n");
+	print_config(&game->config);
 	free_array(lines);
 	return (0);
 }

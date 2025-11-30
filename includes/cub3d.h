@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/29 02:32:15 by akwadran         ###   ########.fr       */
+/*   Updated: 2025/11/30 17:44:45 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ typedef struct s_config
 	char	*so_tex;		// Textura sur
 	char	*we_tex;		// Textura oeste
 	char	*ea_tex;		// Textura este
-	int		floor_color;	// Color del suelo
-	int		ceil_color;		// Color del techo
+	unsigned int		floor_color;	// Color del suelo
+	unsigned int		ceil_color;		// Color del techo
 	t_map	*map;
 }	t_config;
 

@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/29 02:46:53 by akwadran         ###   ########.fr       */
+/*   Updated: 2025/11/30 17:45:42 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,13 @@ int	get_color(char *line, t_game *game);
 
 // RENDER.C
 int		render_frame(t_game *game);
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color);
 
 // ------------------------------------------------------
 // 							DEBUG
 // ------------------------------------------------------
 
 void	print_config(t_config *config);
+void    print_array(char **array);
 
 #endif
