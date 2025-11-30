@@ -19,6 +19,8 @@ static int	get_n_lines(char *file)
 	return (++n_lines);
 }
 
+
+
 static void	fill_out_buffer(char **buffer, int fd)
 {
 	int	i;
