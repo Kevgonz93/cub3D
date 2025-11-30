@@ -19,35 +19,20 @@ static int	get_n_lines(char *file)
 	return (++n_lines);
 }
 
-static char	*rm_trailing_newline(char *line)
-{
-	char	*new;
 
-	if (line[ft_strlen(line) - 1] == '\n')
-	{
-		new = (char *)malloc(sizeof(char) * ft_strlen(line));
-		ft_strlcpy(new, line, ft_strlen(line));
-	}
-	else
-		new = ft_strdup(line);
-	return (new);
-}
 
 static void	fill_out_buffer(char **buffer, int fd)
 {
 	int	i;
-	char	*tmp;
 
 	if (!buffer)
 		return ;
 	i = 0;
 	while (1)
 	{
-		tmp = get_next_line(fd);
-		if (!tmp)
+		buffer[i] = get_next_line(fd);
+		if (!buffer[i])
 			break ;
-		buffer[i] = rm_trailing_newline(tmp);
-		free(tmp);
 		//printf("%s", buffer[i]); // QUITAR
 		i++;
 	}

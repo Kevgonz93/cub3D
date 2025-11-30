@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:42:07 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/30 20:58:53 by akwadran         ###   ########.fr       */
+/*   Updated: 2025/11/30 21:48:57 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,32 +45,18 @@ static int	parse_textures(char **lines, t_game *game, int *map_index)
 static int	validate_chars(char *line)
 {
 	int	i;
-	//bool	found;
 
 	i = 0;
-	//found = 0;
-	//while (line[i] == ' ')
-	//	i++;
 	while (line[i])
 	{
-		printf("CHAR CHECK: %c\n", line[i]);
-		//found = 1;
 		if (!(line[i] == '1' || line[i] == '0' || line[i] == 'N' || line[i] == 'S'
 			|| line[i] == 'E' || line[i] == 'W' || line[i] == ' '))
 		{
-			printf("INCORRECT CHAR: %s\n", &line[i]);
+			printf("INCORRECT CHAR: %s\n", &line[i]); // QUITAR
 			return (error("Map contains incorrect character"));
 		}
 		i++;
 	}
-	//while (line[i])
-	//{
-	//	if (line[i] != ' ')
-	//		return (error("Map contains incorrect character"));
-	//	i++;
-	//}
-	//if (!found)
-	//	return (error("Map can´t contain empty line"));
 	return (0);
 }
 
@@ -90,22 +76,82 @@ static int	find_player(char *line)
 	return (player);
 }
 
-static int	get_map_height(char **lines, int map_index, t_map *map)
-{
-	int	i;
-
-	i = map_index;
-	while (lines[i])
-		i++;
-	map->height = i - map_index;
-	return (0);
-}
-
 static int	check_walls(char **lines, t_map *map)
 {
 	// por hacer
 	(void)map;
 	(void)lines;
+	return (0);
+}
+
+static char	*rm_trailing_newline(char *line)
+{
+	char	*new;
+
+	if (line[ft_strlen(line) - 1] == '\n')
+	{
+		new = (char *)malloc(sizeof(char) * ft_strlen(line));
+		ft_strlcpy(new, line, ft_strlen(line));
+	}
+	else
+		new = ft_strdup(line);
+	return (new);
+}
+
+static int	get_grid(char **lines, int map_index, t_map *map)
+{
+	int	i;
+	char	**grid;
+
+	map->height = 0;
+	i = map_index;
+	while (lines[i])
+	{
+		map->height++;
+		i++;
+	}
+	if (map->height == 0)
+		return (error("Empty map"));
+	grid = (char**)malloc(sizeof(char *) * map->height + 1);
+	if (!grid)
+		return (error("Grid: Malloc failed"));
+	i = 0;
+	while (lines[map_index])
+	{
+		grid[i] = rm_trailing_newline(lines[map_index]);
+		i++;
+		map_index++;
+	}
+	grid[i] = NULL;
+	map->grid = grid;
+	return (0);
+}
+
+static int	fill_empty_spaces(t_map *map)
+{
+	int	i;
+	char	*tmp;
+	int	j;
+
+	i = 0;
+	while (map->grid[i])
+	{
+		if ((int)ft_strlen(map->grid[i]) < map->width)
+		{
+			tmp = (char *)malloc(sizeof(char) * (map->width + 1));
+			ft_strlcpy(tmp, map->grid[i], ft_strlen(map->grid[i]));
+			j = ft_strlen(map->grid[i]);
+			while (j < map->width)
+			{
+				tmp[j] = ' ';
+				j++;
+			}
+			tmp[j] = '\0';
+			free(map->grid[i]);
+			map->grid[i] = tmp;
+		}
+		i++;
+	}
 	return (0);
 }
 
@@ -125,20 +171,23 @@ static int	parse_map(char **lines, t_game *game, int map_index)
 	while (!strcmp(lines[i], "\n"))
 		i++;
 	map_index = i;
-	while (lines[i])
+	if (get_grid(lines, map_index, map))
+		return (1);
+	i = 0;
+	while (map->grid[i])
 	{
-		if ((int)ft_strlen(lines[i]) > map->width)
-			map->width = ft_strlen(lines[i]);
-		if (validate_chars(lines[i]))
+		if ((int)ft_strlen(map->grid[i]) > map->width)
+			map->width = ft_strlen(map->grid[i]);
+		if (validate_chars(map->grid[i]))
 			return (1);
-		player += find_player(lines[i]);
+		player += find_player(map->grid[i]);
 		i++;
 	}
 	if (player != 1)
 		return (error("There must be exactly one player"));
-	get_map_height(lines, map_index, map);
-	check_walls(lines, map);
-	(void)game; // QUITAR
+	fill_empty_spaces(map);
+	check_walls(map->grid, map);
+	game->config.map = map;
 	return (0);
 }
 
@@ -147,11 +196,9 @@ int	parse_file(char *file, t_game *game)
 	char	**lines;
 	int		map_index;
 
-	(void)game;
-
 	lines = get_lines(file);
 	if (!lines)
-		return (error("Malloc failed"));
+		return (error("Buffer: Malloc failed"));
 	print_array(lines); // QUITAR
 	if (parse_textures(lines, game, &map_index))
 	{
