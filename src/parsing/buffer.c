@@ -45,7 +45,7 @@ char	**get_lines(char *file)
 	buffer_size = get_n_lines(file);
 	if (buffer_size == -1)
 		return (NULL);
-	buffer = (char **)malloc(sizeof(char) * buffer_size + 1);
+	buffer = (char **)malloc(sizeof(char *) * (buffer_size + 1));
 	if (!buffer)
 		return (NULL);
 	fd = open(file, O_RDONLY);

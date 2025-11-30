@@ -68,13 +68,15 @@ int	get_color(char *line, t_game *game)
 	rgb[0] = ft_atoi(color[0]);
 	rgb[1] = ft_atoi(color[1]);
 	rgb[2] = ft_atoi(color[2]);
+	printf("RGB: %d,%d,%d\n", rgb[0], rgb[1], rgb[2]);
 	free_array(color);
 	if (!valid_range(rgb))
 	{
 		// err: invalid range
 		return (1);
 	}
-	trgb = (rgb[0] >> 16 | rgb[1] >> 8 | rgb[2]);
+	trgb = (rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
+	printf("COLOR UNS INT: %x\n", trgb);
 	if (!strncmp(line, "F", 1))
 		game->config.floor_color = trgb;
 	else
