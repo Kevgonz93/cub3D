@@ -44,7 +44,7 @@ static char	**init_array(char const *s, int count, char c)
 	{
 		while (*s != '\0' && *s == c)
 			s++;
-		array[i] = (char *)malloc(sizeof(char) * split_strlen(c, s));
+		array[i] = (char *)malloc(sizeof(char) * (split_strlen(c, s) + 1));
 		if (array[i] == NULL)
 		{
 			free_array(array);

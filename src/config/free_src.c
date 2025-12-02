@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_src.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:52:28 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 15:03:17 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/02 21:19:57 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	free_config(t_game *game)
 	if (game->config.map)
 	{
 		free_map(game->config.map);
-		free(game->config.map);
+		//free(game->config.map); // double free
 	}
 	game->config.no_tex = NULL;
 	game->config.so_tex = NULL;
