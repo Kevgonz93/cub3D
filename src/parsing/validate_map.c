@@ -48,14 +48,9 @@ int	validate_map(t_map *map)
 	int	i;
 
 	player = 0;
-	//map_index = i;
-	
-	// SEPARAR EN OTRA FUNCIÓN
 	i = 0;
 	while (map->grid[i])
 	{
-		if ((int)ft_strlen(map->grid[i]) > map->width)
-			map->width = ft_strlen(map->grid[i]);
 		if (validate_chars(map->grid[i]))
 			return (1);
 		player += find_player(map->grid[i]);
@@ -63,7 +58,10 @@ int	validate_map(t_map *map)
 	}
 	if (player != 1)
 		return (error("There must be exactly one player"));
-	//fill_empty_spaces(map);
-	check_walls(map->grid, map);
+	if (check_walls(map->grid, map))
+    {
+        // err
+        return (1);
+    }
     return (0);
 }
