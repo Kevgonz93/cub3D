@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/30 17:45:42 by akwadran         ###   ########.fr       */
+/*   Updated: 2025/12/02 19:52:17 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,19 @@ int		key_release(int keycode, t_game *game);
 // ------------------------------------------------------
 
 // PARSE_FILE.C
-int		parse_file(char *file, t_game *game);
+int	parse_file(char *file, t_game *game);
 
 // BUFFER.C
-char	**get_lines(char *file);
+char    **get_buffer(char *file);
 
 // TEXTURES.C
 int	get_tex(char *line, t_game *game);
+
+// COLORS.C
 int	get_color(char *line, t_game *game);
+
+// MAP.C
+int	parse_map(char **lines, t_game *game, int map_index);
 
 // ------------------------------------------------------
 // 							RENDERING
