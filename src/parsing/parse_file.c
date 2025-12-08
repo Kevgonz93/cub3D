@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:42:07 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/02 21:00:01 by akwadran         ###   ########.fr       */
+/*   Updated: 2025/12/08 16:36:37 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	parse_file(char *file, t_game *game)
 	buffer = get_buffer(file);
 	if (!buffer)
 		return (error("Buffer: Malloc failed"));
-	//print_array(buffer); // QUITAR
 	if (parse_textures(buffer, game, &map_index))
 	{
 		free_array(buffer);
