@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:52:28 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/02 22:11:24 by akwadran         ###   ########.fr       */
+/*   Updated: 2025/12/08 16:20:20 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void	free_map(t_map *map)
 		i = 0;
 		if (map->grid)
 		{
-			//while (i < map->height)
-			while (i < map->height + 2) // if the map is padded
+			while (i < map->height)
+			//while (i < map->height + 2) // if the map is padded
 			{
 				if (map->grid[i])
 					free(map->grid[i]);
