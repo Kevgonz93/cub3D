@@ -114,5 +114,6 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color);
 
 void	print_config(t_config *config);
 void    print_array(char **array);
+int render_2d_map(t_game *game);
 
 #endif
