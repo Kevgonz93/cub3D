@@ -17,7 +17,7 @@ static int	is_cub(char *arg)
 	int	len;
 
 	len = ft_strlen(arg);
-	if (len >= 4)
+	if (len <= 4)
 		return (0);
 	if (arg[len - 4] == '.' && arg[len - 3] == 'c' && arg[len - 2] == 'u'
 		&& arg[len - 1] == 'b')
@@ -58,7 +58,9 @@ static void	init_hooks(t_game *game)
 	mlx_hook(game->win, 3, 1L << 1, key_release, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 
-	mlx_loop_hook(game->mlx, render_frame, game);
+	render_frame(game);
+	//mlx_loop_hook(game->mlx, render_frame, game);
+	mlx_loop_hook(game->mlx, render_2d_map, game); // QUITAR
 }
 
 int	main(int argc, char **argv)

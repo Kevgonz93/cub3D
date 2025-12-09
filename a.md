@@ -15,7 +15,7 @@ Responsable de:
 
 - Comprobar que el mapa es rectangular
 - Que solo contiene caracteres válidos
-- Que hay solo un jugador y obtener su posición
+- Que hay solo un jugador y obtener su posición <- TO DO
 - Cerrar el mapa con flood fill
 - Comprobar huecos o espacios peligrosos
 

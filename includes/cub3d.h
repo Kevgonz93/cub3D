@@ -30,6 +30,7 @@
 // ------------------------------------------------------
 # define WIDTH  1000
 # define HEIGHT 700
+# define TILE 10 // PARA DEBUGEAR, QUITAR LUEGO
 
 // Teclas (MacOS por defecto)
 # define KEY_W        13
