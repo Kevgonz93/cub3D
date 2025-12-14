@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 17:04:44 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/30 17:45:20 by akwadran         ###   ########.fr       */
+/*   Updated: 2025/12/14 12:38:08 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,8 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color)
 
 int	render_frame(t_game *game)
 {
-	int			x;
-	int			y;
-	t_config	*config;
-
-	y = 0;
-	config = &game->config;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			if (y < HEIGHT / 2)
-				my_mlx_pixel_put(&game->img, x, y, config->ceil_color);
-			else
-				my_mlx_pixel_put(&game->img, x, y, config->floor_color);
-			x++;
-		}
-		y++;
-	}
-	y = HEIGHT / 4;
-	while (y < 3 * HEIGHT / 4)
-	{
-		my_mlx_pixel_put(&game->img, WIDTH / 2 - 1, y, 0xFF0000);
-		y++;
-	}
+	paint_background(game);
+	paint_walls(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);
 }

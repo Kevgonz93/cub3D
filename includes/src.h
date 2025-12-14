@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   src.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/08 15:28:20 by akwadran         ###   ########.fr       */
+/*   Updated: 2025/12/14 12:34:15 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,14 @@ char **get_grid_padded(t_map *map);
 // ------------------------------------------------------
 // 							RENDERING
 // ------------------------------------------------------
+
+// BACKGROUND.C
+void	paint_background(t_game *game);
+
+// WALLS.C
+double	get_angle(t_game *game, int x);
+void	pre_dda(t_game *game, float ray_angle, t_dda *dda);
+void	paint_walls(t_game *game);
 
 // RENDER.C
 int		render_frame(t_game *game);

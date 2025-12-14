@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inittial_settings.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:12:43 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/30 17:56:02 by akwadran         ###   ########.fr       */
+/*   Updated: 2025/12/14 12:38:28 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ void	init_config(t_config *config)
 	config->so_tex = NULL;
 	config->we_tex = NULL;
 	config->ea_tex = NULL;
-	config->floor_color = 0;
-	config->ceil_color = 0;
+	config->floor_color = -1;
+	config->ceil_color = -1;
+	config->fov = PI / 3;
 	config->map = NULL;
 }
 

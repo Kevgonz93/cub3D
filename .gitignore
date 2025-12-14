@@ -5,6 +5,7 @@ minilibx/*.o
 mlx_mac
 .vscode/
 cub3D
+*.cub
 minilibx/Makefile.gen
 minilibx/libmlx_Darwin.a
 minilibx/obj/

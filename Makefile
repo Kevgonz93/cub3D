@@ -43,7 +43,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(MAKE) -C $(MLX_DIR)
 	$(CC) $(CFLAGS) $(OBJS) $(X11_FLAGS) $(MLX_FLAGS) -o $(NAME)
-	## vv ELIMINAR ANTES DE ENTREGAR vv
+# vv ELIMINAR ANTES DE ENTREGAR vv
 	make clean
 
 %.o: %.c
