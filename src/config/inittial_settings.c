@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:12:43 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 15:03:27 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/24 20:50:50 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	init_config(t_config *config)
 	config->ea_tex = NULL;
 	config->floor_color = -1;
 	config->ceil_color = -1;
+	config->fov = PI / 3;
 	config->map = NULL;
 }
 

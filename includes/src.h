@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 14:49:43 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/25 16:24:23 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,15 @@ int		parse_file(char *file, t_game *game);
 // 							RENDERING
 // ------------------------------------------------------
 
+// BACKGROUND.C
+void	paint_background(t_game *game);
+
+// WALLS.C
+double	get_angle(t_game *game, int x);
+void	pre_dda(t_game *game, float ray_angle, t_dda *dda);
+void	paint_walls(t_game *game);
+
 // RENDER.C
 int		render_frame(t_game *game);
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void	my_put_pixel(t_img *img, int x, int y, int color);
 #endif

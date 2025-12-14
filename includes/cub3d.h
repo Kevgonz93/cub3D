@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 14:57:47 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/11/25 16:20:14 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@
 // ------------------------------------------------------
 //                     CONSTANTES
 // ------------------------------------------------------
+// Dimensiones de la ventana
 # define WIDTH  1000
 # define HEIGHT 700
+
+// Variables matemáticas
+# define PI		3.14159265358979323846
 
 // Teclas (MacOS por defecto)
 # define KEY_W        13
@@ -41,6 +45,22 @@
 // ------------------------------------------------------
 //                     ESTRUCTURAS
 // ------------------------------------------------------
+
+typedef struct s_dda
+{
+	double	ray_dir_x;		// Dirección del rayo X
+	double	ray_dir_y;		// Dirección del rayo Y
+	int		map_x;			// Posición del mapa X
+	int		map_y;			// Posición del mapa Y
+	double	side_dist_x;	// Distancia al siguiente lado X
+	double	side_dist_y;	// Distancia al siguiente lado Y
+	double	delta_dist_x;	// Distancia entre lados X
+	double	delta_dist_y;	// Distancia entre lados Y
+	int		step_x;			// Paso en X
+	int		step_y;			// Paso en Y
+	int		hit;			// ¿Se ha golpeado una pared?
+	int		side;			// ¿Se ha golpeado una pared vertical u horizontal?
+}	t_dda;
 
 // Imagen generada con mlx_new_image
 typedef struct s_img
@@ -80,6 +100,7 @@ typedef struct s_config
 	char	*ea_tex;		// Textura este
 	int		floor_color;	// Color del suelo
 	int		ceil_color;		// Color del techo
+	double	fov;			// Campo de visión
 	t_map	*map;
 }	t_config;
 

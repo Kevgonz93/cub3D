@@ -4,3 +4,4 @@ minilibx/*.o
 mlx_mac
 .vscode/
 cub3D
+*.cub
