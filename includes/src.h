@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/14 12:34:15 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/14 13:14:25 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,13 @@ char **get_grid_padded(t_map *map);
 // BACKGROUND.C
 void	paint_background(t_game *game);
 
+// DDA.C
+void	run_dda(t_game *game, double ray_angle, t_dda *dda);
+
 // WALLS.C
-double	get_angle(t_game *game, int x);
-void	pre_dda(t_game *game, float ray_angle, t_dda *dda);
+
+void	render_walls(t_game *game);
+void	draw_wall_column(t_game *game, int x, double wall_height, t_dda *dda);
 void	paint_walls(t_game *game);
 
 // RENDER.C
