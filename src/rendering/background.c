@@ -14,9 +14,9 @@ void	paint_background(t_game *game)
 		while (x < WIDTH)
 		{
 			if (y < HEIGHT / 2)
-				my_put_pixel(&game->img, x, y, config->ceil_color);
+				my_mlx_pixel_put(&game->img, x, y, config->ceil_color);
 			else
-				my_put_pixel(&game->img, x, y, config->floor_color);
+				my_mlx_pixel_put(&game->img, x, y, config->floor_color);
 			x++;
 		}
 		y++;

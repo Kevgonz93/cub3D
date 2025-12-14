@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/14 12:37:40 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:57:32 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef struct s_config
 	unsigned int		floor_color;	// Color del suelo
 	unsigned int		ceil_color;		// Color del techo
 	double				fov;			// Campo de visión
+	double				player_angle;	// Ángulo inicial del jugador
 	t_map				*map;
 }	t_config;
 
