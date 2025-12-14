@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/25 16:20:14 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:37:40 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdio.h>
 # include <string.h>
 # include <errno.h>
+# include <stdbool.h>
+# include <limits.h>
 
 # include "mlx.h"
 
@@ -29,6 +31,7 @@
 // Dimensiones de la ventana
 # define WIDTH  1000
 # define HEIGHT 700
+# define TILE 10 // PARA DEBUGEAR, QUITAR LUEGO
 
 // Variables matemáticas
 # define PI		3.14159265358979323846
@@ -94,14 +97,14 @@ typedef struct s_map
 // Configuración del archivo .cub
 typedef struct s_config
 {
-	char	*no_tex;		// Textura norte
-	char	*so_tex;		// Textura sur
-	char	*we_tex;		// Textura oeste
-	char	*ea_tex;		// Textura este
-	int		floor_color;	// Color del suelo
-	int		ceil_color;		// Color del techo
-	double	fov;			// Campo de visión
-	t_map	*map;
+	char				*no_tex;		// Textura norte
+	char				*so_tex;		// Textura sur
+	char				*we_tex;		// Textura oeste
+	char				*ea_tex;		// Textura este
+	unsigned int		floor_color;	// Color del suelo
+	unsigned int		ceil_color;		// Color del techo
+	double				fov;			// Campo de visión
+	t_map				*map;
 }	t_config;
 
 // Estructura principal del juego

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:13:18 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 15:05:11 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/08 16:44:08 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	is_cub(char *arg)
 	int	len;
 
 	len = ft_strlen(arg);
+	if (len <= 4)
+		return (0);
 	if (arg[len - 4] == '.' && arg[len - 3] == 'c' && arg[len - 2] == 'u'
 		&& arg[len - 1] == 'b')
 		return (1);
@@ -56,7 +58,9 @@ static void	init_hooks(t_game *game)
 	mlx_hook(game->win, 3, 1L << 1, key_release, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 
-	mlx_loop_hook(game->mlx, render_frame, game);
+	render_frame(game);
+	//mlx_loop_hook(game->mlx, render_frame, game);
+	mlx_loop_hook(game->mlx, render_2d_map, game); // QUITAR
 }
 
 int	main(int argc, char **argv)

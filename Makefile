@@ -1,7 +1,7 @@
 NAME    := cub3D
 
 CC      := cc
-CFLAGS  := -Wall -Wextra -Werror
+CFLAGS  := -Wall -Wextra -Werror -g3 # QUITAR -g3
 
 OS      := $(shell uname)
 
@@ -27,6 +27,7 @@ SRCS := $(wildcard src/*.c) \
         $(wildcard src/parsing/*.c) \
         $(wildcard src/events/*.c) \
 		$(wildcard src/config/*.c) \
+		$(wildcard debug/*.c) \
         $(wildcard *.c)
 
 OBJS := $(SRCS:.c=.o)

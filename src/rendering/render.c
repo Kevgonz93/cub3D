@@ -6,13 +6,13 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 17:04:44 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 18:44:12 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:38:08 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/src.h"
 
-void	my_put_pixel(t_img *img, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color)
 {
 	char	*dst;
 

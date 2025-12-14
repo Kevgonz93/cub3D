@@ -3,87 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:42:07 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/24 15:02:51 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/08 16:36:37 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/src.h"
 
-static int	get_buffer_size(char *file)
+static bool	all_textures_found(t_game *game)
 {
-	int		fd;
-	int		size;
-	char	tmp[1];
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		return (error("Map can´t be opened"));
-	size = 0;
-	while (read(fd, &tmp, sizeof(char)) > 0)
-		size++;
-	close(fd);
-	return (++size);
+	if (game->config.no_tex && game->config.so_tex && game->config.we_tex
+		&& game->config.ea_tex && game->config.floor_color > 0
+		&& game->config.ceil_color > 0)
+		return (1);
+	return (0);
 }
 
-static char	*create_buffer(char *file)
+static int	parse_textures(char **lines, t_game *game, int *map_index)
 {
-	int		fd;
-	char	*buffer;
-	int		buffer_size;
+	int	i;
 
-	buffer_size = get_buffer_size(file);
-	if (buffer_size == -1)
-		return (NULL);
-	buffer = (char *)malloc(sizeof(char) * buffer_size);
-	if (!buffer)
-		return (NULL);
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
+	i = -1;
+	while (lines[++i] && !all_textures_found(game))
 	{
-		error("Map can´t be opened");
-		free(buffer);
-		return (NULL);
+		if (!strcmp(lines[i], "\n"))
+			continue ;
+		else if (!strncmp(lines[i], "NO", 2) || !strncmp(lines[i], "SO", 2)
+			|| !strncmp(lines[i], "WE", 2) || !strncmp(lines[i], "EA", 2))
+			get_tex(lines[i], game);
+		else if (!strncmp(lines[i], "F", 1) || !strncmp(lines[i], "C", 1))
+			get_color(lines[i], game);
+		else
+			return (error("Unexpected line"));
 	}
-	read(fd, buffer, buffer_size);
-	printf("BUFFER:\n%s\n", buffer); // QUITAR
-	return (buffer);
+	*map_index = i;
+	return (0);
 }
 
 int	parse_file(char *file, t_game *game)
 {
-	char	*buffer;
-	// int		i;
+	char	**buffer;
+	int		map_index;
 
-	(void)game;
-
-	buffer = create_buffer(file);
+	buffer = get_buffer(file);
 	if (!buffer)
-		return (error("Malloc failed"));
-	/*
-	i = 0;
-	while (buffer[i])
-    {
-        if (buffer[i] == '\n')
-            i++;
-        else if (buffer[i] == 'N')
-            get_no_tex(&buffer[i]);
-        else if (buffer[i] == 'S')
-            get_so_tex(&buffer[i]);
-        else if (buffer[i] == 'W')
-            get_we_tex(&buffer[i])
-    
-    }
-	game->config.no_tex;
-    game->config.so_tex;
-    game->config.we_tex;
-    game->config.ea_tex;
-    game->config.floor_color;
-    game->config.ceil_color;
-    game->config.map;
-    */
-	free(buffer);
+		return (error("Buffer: Malloc failed"));
+	if (parse_textures(buffer, game, &map_index))
+	{
+		free_array(buffer);
+		return (1);
+	}
+	if (parse_map(buffer, game, map_index))
+	{
+		//err
+		free_array(buffer);
+		return (1);
+	}
+	print_config(&game->config); // QUITAR
+	free_array(buffer);
 	return (0);
 }

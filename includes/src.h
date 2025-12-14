@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2025/11/25 16:24:23 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/14 12:34:15 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,29 @@
 // ------------------------------------------------------
 
 // FT_STRLEN.C
-size_t	ft_strlen(char *s);
+size_t	ft_strlen(const char *s);
+// FT_STRDUP.C
+char	*ft_strdup(const char *s);
+// FT_STRJOIN.C
+char	*ft_strjoin(char *s1, const char *s2);
+// FT_SUBSTR.C
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+// FT_STRLCPY.C
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+// GET_NEXT_LINE.C
+char	*get_next_line(int fd);
+// FREE_ARRAY.C
+void	free_array(char **array);
+// FT_STRCMP.C
+int	ft_strcmp(const char *s1, const char *s2);
+// FT_ISSPACE.C
+int	ft_isspace(int c);
+// FT_SPLIT.C
+char	**ft_split(char const *s, char c);
+// FT_ISDIGIT.C
+int	ft_isdigit(int c);
+// FT_ATOI.C
+int	ft_atoi(const char *nptr);
 
 // ------------------------------------------------------
 // 							CONFIG
@@ -58,7 +80,25 @@ int		key_release(int keycode, t_game *game);
 // ------------------------------------------------------
 
 // PARSE_FILE.C
-int		parse_file(char *file, t_game *game);
+int	parse_file(char *file, t_game *game);
+
+// BUFFER.C
+char    **get_buffer(char *file);
+
+// TEXTURES.C
+int	get_tex(char *line, t_game *game);
+
+// COLORS.C
+int	get_color(char *line, t_game *game);
+
+// MAP.C
+int	parse_map(char **lines, t_game *game, int map_index);
+
+// VALIDATE_MAP.C
+int	validate_map(t_map *map);
+
+// GRID_PADDED.C
+char **get_grid_padded(t_map *map);
 
 // ------------------------------------------------------
 // 							RENDERING
@@ -74,5 +114,14 @@ void	paint_walls(t_game *game);
 
 // RENDER.C
 int		render_frame(t_game *game);
-void	my_put_pixel(t_img *img, int x, int y, int color);
+void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color);
+
+// ------------------------------------------------------
+// 							DEBUG
+// ------------------------------------------------------
+
+void	print_config(t_config *config);
+void    print_array(char **array);
+int render_2d_map(t_game *game);
+
 #endif
