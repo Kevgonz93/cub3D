@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 17:04:44 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/14 13:19:02 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/18 18:19:58 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color)
 int	render_frame(t_game *game)
 {
 	paint_background(game);
-	paint_walls(game);
+	render_walls(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);
 }

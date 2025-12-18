@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/14 12:57:32 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/18 18:01:45 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@
 //                     ESTRUCTURAS
 // ------------------------------------------------------
 
+// Estructura para el algoritmo DDA
 typedef struct s_dda
 {
 	double	ray_dir_x;		// Dirección del rayo X
