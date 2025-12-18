@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/18 18:01:45 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/18 18:37:15 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@
 # define KEY_LEFT     123
 # define KEY_RIGHT    124
 # define KEY_ESC      53
+
+// Velocidades de movimiento y rotación
+# define ROT_SPEED		0.05
+# define MOVE_SPEED		0.1
 
 // ------------------------------------------------------
 //                     ESTRUCTURAS

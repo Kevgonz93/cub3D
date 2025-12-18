@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:13:18 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/18 18:19:21 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/18 18:39:49 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static void	init_hooks(t_game *game)
 	mlx_hook(game->win, 2, 1L << 0, key_press, game);
 	mlx_hook(game->win, 3, 1L << 1, key_release, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
-	render_frame(game);
+	mlx_loop_hook(game->mlx, render_frame, game);
+	// render_frame(game);
 	//mlx_loop_hook(game->mlx, render_frame, game);
 	// mlx_loop_hook(game->mlx, render_2d_map, game); // QUITAR
 }
