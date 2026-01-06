@@ -27,8 +27,8 @@ void	init_config(t_config *config)
 	config->so_tex = NULL;
 	config->we_tex = NULL;
 	config->ea_tex = NULL;
-	config->floor_color = -1;
-	config->ceil_color = -1;
+	config->floor_color = 0;
+	config->ceil_color = 0;
 	config->fov = PI / 3;
 	config->map = NULL;
 }
