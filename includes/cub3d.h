@@ -24,6 +24,7 @@
 # include <limits.h>
 
 # include "mlx.h"
+# include "src.h"
 
 // ------------------------------------------------------
 //                     CONSTANTES

@@ -1,34 +1,6 @@
 #include "../../includes/cub3d.h"
 #include "../../includes/src.h"
-/*
-char	*ft_strjoin(char *dst, char *src)
-{
-	int		i;
-	int		j;
-	char	*new_str;
 
-	if (!dst)
-		return (ft_strdup(src));
-	if (!src)
-		return (NULL);
-	new_str = (char *)malloc(sizeof(char)
-			* (ft_strlen(dst) + ft_strlen(src) + 1));
-	if (!new_str)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (dst[i])
-	{
-		new_str[i] = dst[i];
-		i++;
-	}
-	while (src[j])
-		new_str[i++] = src[j++];
-	new_str[i] = '\0';
-	free(dst);
-	return (new_str);
-}
-*/
 char	*make_full_line(int width, char c)
 {
 	char	*line;
