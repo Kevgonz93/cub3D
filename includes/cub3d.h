@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/10 18:19:10 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/10 20:57:03 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,29 +37,39 @@
 // Variables matemáticas
 # define PI		3.14159265358979323846
 
-// Teclas (MacOS por defecto)
-/*
-# define KEY_W        13
-# define KEY_A        0
-# define KEY_S        1
-# define KEY_D        2
-# define KEY_Y        16
-# define KEY_N        45
-# define KEY_LEFT     123
-# define KEY_RIGHT    124
-# define KEY_ESC      53
-*/
+/* ------------------------------------------------------ */
+/*                     TECLAS                             */
+/* ------------------------------------------------------ */
 
-// Teclas Linux
-# define KEY_W        119
-# define KEY_A        97
-# define KEY_S        115
-# define KEY_D        100
-# define KEY_Y        121
-# define KEY_N        110
-# define KEY_LEFT     65361
-# define KEY_RIGHT    65363
-# define KEY_ESC      65307
+# ifdef __APPLE__
+
+/* Teclas (macOS por defecto) */
+#  define KEY_W        13
+#  define KEY_A        0
+#  define KEY_S        1
+#  define KEY_D        2
+#  define KEY_Y        16
+#  define KEY_N        45
+#  define KEY_LEFT     123
+#  define KEY_RIGHT    124
+#  define KEY_ESC      53
+
+# elif defined(__linux__)
+
+/* Teclas (Linux) */
+#  define KEY_W        119
+#  define KEY_A        97
+#  define KEY_S        115
+#  define KEY_D        100
+#  define KEY_Y        121
+#  define KEY_N        110
+#  define KEY_LEFT     65361
+#  define KEY_RIGHT    65363
+#  define KEY_ESC      65307
+
+# else
+#  error "Sistema operativo no soportado"
+# endif
 
 // Velocidades de movimiento y rotación
 # define ROT_SPEED		0.05
