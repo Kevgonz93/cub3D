@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/18 18:37:15 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/19 12:22:03 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,15 @@
 # define KEY_A        0
 # define KEY_S        1
 # define KEY_D        2
+# define KEY_Y        16
+# define KEY_N        45
 # define KEY_LEFT     123
 # define KEY_RIGHT    124
 # define KEY_ESC      53
 
 // Velocidades de movimiento y rotación
 # define ROT_SPEED		0.05
-# define MOVE_SPEED		0.1
+# define MOVE_SPEED		0.03
 
 // ------------------------------------------------------
 //                     ESTRUCTURAS
@@ -113,15 +115,26 @@ typedef struct s_config
 	t_map				*map;
 }	t_config;
 
+typedef struct s_exit
+{
+	bool	confirm_exit;	// Estado de confirmación de salida
+	int		x;				// Coordenada X del cuadro de confirmación
+	int		y;				// Coordenada Y del cuadro de confirmación
+	int		width;			// Ancho del cuadro de confirmación
+	int		height;			// Alto del cuadro de confirmación
+	int		color_box;		// Color del cuadro de confirmación
+	int		color_text;		// Color del texto de confirmación
+}	t_exit;
 // Estructura principal del juego
 typedef struct s_game
 {
-	void		*mlx;		// Puntero a la instancia de MLX
-	void		*win;		// Puntero a la ventana
-	t_img		img;		// Imagen para renderizar
-	t_config	config;		// Configuración del juego
-	t_player	player;		// Información del jugador
-	int			keys[256];	// Estado de las teclas
+	void		*mlx;			// Puntero a la instancia de MLX
+	void		*win;			// Puntero a la ventana
+	t_img		img;			// Imagen para renderizar
+	t_config	config;			// Configuración del juego
+	t_player	player;			// Información del jugador
+	t_exit		exit_status;	// Estado de confirmación de salida
+	int			keys[256];		// Estado de las teclas
 }	t_game;
 
 #endif

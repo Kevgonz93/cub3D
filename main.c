@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:13:18 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/18 18:39:49 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/20 23:01:45 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ static void	set_map(t_game *game)
 		return ;
 	map.grid[0] = ft_strdup("111111111111");
 	map.grid[1] = ft_strdup("100000000001");
-	map.grid[2] = ft_strdup("100011110001");
-	map.grid[3] = ft_strdup("100000000001");
+	map.grid[2] = ft_strdup("101010010101");
+	map.grid[3] = ft_strdup("101010010101");
 	map.grid[4] = ft_strdup("100000000001");
 	map.grid[5] = ft_strdup("111111111111");
 	map.grid[6] = NULL;

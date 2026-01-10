@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:12:43 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/14 12:38:28 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/20 20:55:57 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_config(t_config *config)
 	config->floor_color = -1;
 	config->ceil_color = -1;
 	config->fov = PI / 3;
+	config->player_angle = 0;
 	config->map = NULL;
 }
 
@@ -43,22 +44,29 @@ void	init_player(t_player *player)
 	player->plane_y = 0.66;
 }
 
+void	init_exit_conf(t_exit *exit_conf)
+{
+	exit_conf->confirm_exit = false;
+	exit_conf->width = 420;
+	exit_conf->height = 120;
+	exit_conf->x = (WIDTH - exit_conf->width) / 2;
+	exit_conf->y = (HEIGHT - exit_conf->height) / 2;
+	exit_conf->color_box = 0x202020;
+	exit_conf->color_text = 0xFFFFFF;
+}
+
 void	init_game(t_game *game)
 {
 	int	key;
 
 	game->mlx = NULL;
 	game->win = NULL;
-
 	// T_IMG
 	init_img(&game->img);
-
 	// T_CONFIG
 	init_config(&game->config);
-
 	// T_PLAYER
 	init_player(&game->player);
-
 	// KEYS
 	key = 0;
 	while (key < 256)
@@ -66,5 +74,7 @@ void	init_game(t_game *game)
 		game->keys[key] = 0;
 		key++;
 	}
+	// T_EXIT
+	init_exit_conf(&game->exit_status);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/18 18:05:24 by kegonza          ###   ########.fr       */
+/*   Updated: 2025/12/19 12:19:26 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,14 @@ void	init_game(t_game *game);
 // 							EVENTS
 // ------------------------------------------------------
 
+// MOVES.C
+void	rotate_player(t_game *game);
+void	move_player(t_game *game);
+void	update_player(t_game *game);
+
 // CLOSING.C
+void	draw_exit_confirm_text(t_game *game);
+void	draw_exit_confirm(t_game *game);
 int		game_exit(t_game *game, int status);
 int		close_window(t_game *game);
 
