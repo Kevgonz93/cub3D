@@ -45,6 +45,6 @@ int render_2d_map(t_game *game)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
+	//mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);
 }
