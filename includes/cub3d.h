@@ -30,10 +30,15 @@
 //                     CONSTANTES
 // ------------------------------------------------------
 // Dimensiones de la ventana
-# define WIDTH  1000
-# define HEIGHT 700
-# define TILE 10 // PARA DEBUGEAR, QUITAR LUEGO
-
+# ifdef __APPLE__
+#  define WIDTH  1000
+#  define HEIGHT 700
+#  define TILE 10 // PARA DEBUGEAR, QUITAR LUEGO
+# elif defined(__linux__)
+#  define WIDTH  800
+#  define HEIGHT 500
+#  define TILE 8 // PARA DEBUGEAR, QUITAR LUEGO
+# endif
 // Variables matemáticas
 # define PI		3.14159265358979323846
 
