@@ -36,6 +36,7 @@ static void	side_moves(t_game *game)
 
 void	move_player(t_game *game)
 {
+	game->config.map->grid[(int)game->player.y][(int)game->player.x] = '0';
 	if (game->keys[KEY_W])
 	{
 		game->player.x += cos(game->config.player_angle) * MOVE_SPEED;
@@ -48,6 +49,7 @@ void	move_player(t_game *game)
 	}
 	if (game->keys[KEY_A] || game->keys[KEY_D])
 		side_moves(game);
+	game->config.map->grid[(int)game->player.y][(int)game->player.x] = 'W';
 }
 
 void	update_player(t_game *game)

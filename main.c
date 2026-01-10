@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:13:18 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/20 23:01:45 by kegonza          ###   ########.fr       */
+/*   Updated: 2026/01/10 18:00:56 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int	main(int argc, char **argv)
 	init_game(&game);
 	printf("parsing file...\n");
 	//   3. Parsear archivo .cub
-	if (parse_file(argv[1], &game) == -1)
+	if (parse_file(argv[1], &game))
 		return (free_game(&game, 1));
 	//test_main(&game);
 	printf("initializing MLX...\n");
