@@ -19,7 +19,7 @@ else
 	X11_FLAGS :=
 endif
 
-INCLUDES := -I$(MLX_DIR) -Iinclude
+INCLUDES := -I$(MLX_DIR) -Iincludes
 
 SRCS := $(wildcard src/*.c) \
         $(wildcard src/utils/*.c) \

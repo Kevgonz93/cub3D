@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:12:43 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/20 20:55:57 by kegonza          ###   ########.fr       */
+/*   Updated: 2026/01/10 12:46:31 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	init_config(t_config *config)
 	config->so_tex = NULL;
 	config->we_tex = NULL;
 	config->ea_tex = NULL;
-	config->floor_color = -1;
-	config->ceil_color = -1;
+	config->floor_color = 0;
+	config->ceil_color = 0;
 	config->fov = PI / 3;
 	config->player_angle = 0;
 	config->map = NULL;
@@ -38,7 +38,7 @@ void	init_player(t_player *player)
 {
 	player->x = 0;
 	player->y = 0;
-	player->dir_x = -1;
+	player->dir_x = 0;
 	player->dir_y = 0;
 	player->plane_x = 0;
 	player->plane_y = 0.66;

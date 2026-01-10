@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/19 12:19:26 by kegonza          ###   ########.fr       */
+/*   Updated: 2026/01/10 20:39:48 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define SRC_H
 
 # include "cub3d.h"
+
+typedef struct s_game   t_game;
+typedef struct s_img    t_img;
+typedef struct s_map    t_map;
+typedef struct s_dda    t_dda;
+typedef struct s_config t_config;
+typedef struct s_player t_player;
 
 // ------------------------------------------------------
 // 							UTILS
