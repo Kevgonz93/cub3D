@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/10 20:35:09 by kegonza          ###   ########.fr       */
+/*   Updated: 2026/01/10 18:19:10 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define PI		3.14159265358979323846
 
 // Teclas (MacOS por defecto)
+/*
 # define KEY_W        13
 # define KEY_A        0
 # define KEY_S        1
@@ -47,6 +48,18 @@
 # define KEY_LEFT     123
 # define KEY_RIGHT    124
 # define KEY_ESC      53
+*/
+
+// Teclas Linux
+# define KEY_W        119
+# define KEY_A        97
+# define KEY_S        115
+# define KEY_D        100
+# define KEY_Y        121
+# define KEY_N        110
+# define KEY_LEFT     65361
+# define KEY_RIGHT    65363
+# define KEY_ESC      65307
 
 // Velocidades de movimiento y rotación
 # define ROT_SPEED		0.05
@@ -135,7 +148,8 @@ typedef struct s_game
 	t_config	config;			// Configuración del juego
 	t_player	player;			// Información del jugador
 	t_exit		exit_status;	// Estado de confirmación de salida
-	int			keys[256];		// Estado de las teclas
+	//int			keys[256];		// Estado de las teclas
+	int			keys[65364];		// Estado de las teclas
 }	t_game;
 
 #endif

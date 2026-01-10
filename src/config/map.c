@@ -1,4 +1,5 @@
 #include "../../includes/cub3d.h"
+#include "../../includes/src.h"
 
 char	*make_full_line(int width, char c)
 {

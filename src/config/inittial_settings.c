@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inittial_settings.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:12:43 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/10 12:46:31 by kegonza          ###   ########.fr       */
+/*   Updated: 2026/01/10 18:27:23 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	init_game(t_game *game)
 	init_player(&game->player);
 	// KEYS
 	key = 0;
-	while (key < 256)
+	while (key < 65364)
 	{
 		game->keys[key] = 0;
 		key++;
@@ -77,4 +77,3 @@ void	init_game(t_game *game)
 	// T_EXIT
 	init_exit_conf(&game->exit_status);
 }
-

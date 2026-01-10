@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:42:07 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/08 16:36:37 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/10 18:28:52 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,51 @@ static int	parse_textures(char **lines, t_game *game, int *map_index)
 	return (0);
 }
 
+static void	get_player_angle(t_game *game, char p)
+{
+	if (p == 'N')
+		game->config.player_angle = 0;
+	else if (p == 'S')
+		game->config.player_angle = PI;
+	else if (p == 'E')
+		game->config.player_angle = PI / 2;
+	else if (p == 'W')
+		game->config.player_angle = 3 * PI / 2;
+}
+
+static int	get_player_data(t_game *game)
+{
+	t_map	*map;
+	int		i;
+	int		j;
+
+	map = game->config.map;
+	i = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			if (map->grid[i][j] == 'N' || map->grid[i][j] == 'S' ||
+				map->grid[i][j] == 'E' || map->grid[i][j] == 'W')
+			{
+				game->player.x = j;
+				game->player.y = i;
+				get_player_angle(game, map->grid[i][j]);
+				game->player.dir_x = cos(game->config.player_angle);
+				game->player.dir_y = sin(game->config.player_angle);
+				game->player.plane_x = 0.0;
+				game->player.plane_y = 0.0;
+				game->config.fov = PI / 3;
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (error("Player not found in grid"));
+}
+
 int	parse_file(char *file, t_game *game)
 {
 	char	**buffer;
@@ -57,11 +102,13 @@ int	parse_file(char *file, t_game *game)
 	}
 	if (parse_map(buffer, game, map_index))
 	{
-		//err
 		free_array(buffer);
 		return (1);
 	}
 	print_config(&game->config); // QUITAR
 	free_array(buffer);
+	if (get_player_data(game))
+		return (1);
+	print_player_data(game); // QUITAR
 	return (0);
 }
