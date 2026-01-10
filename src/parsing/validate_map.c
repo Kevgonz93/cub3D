@@ -51,8 +51,8 @@ static int	check_walls(char **grid, int x, int y, int height, int width)
 
 int	validate_map(t_map *map)
 {
-	int	player;
-	int	i;
+	int		player;
+	int		i;
 	char	**grid_padded;
 
 	player = 0;
@@ -70,10 +70,10 @@ int	validate_map(t_map *map)
 	if (!grid_padded)
 		return (error("Grid padded: Malloc failed"));
 	if (!check_walls(grid_padded, 0, 0, map->height + 2, map->width + 2))
-    {
+	{
 		free_array(grid_padded);
-    	return (error("Map must be closed with walls"));
-    }
+		return (error("Map must be closed with walls"));
+	}
 	free_array(grid_padded);
 	return (0);
 }

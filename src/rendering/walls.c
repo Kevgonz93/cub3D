@@ -16,7 +16,7 @@ static double	get_angle(t_game *game, int x)
 	double	where_in_fov;
 
 	initial_fov_angle = game->config.player_angle - (game->config.fov / 2);
-	proportion_of_screen = (double)x / (double)WIDTH;
+	proportion_of_screen = (double)x / (double)(WIDTH - 1);
 	where_in_fov = proportion_of_screen * game->config.fov;
 	return (initial_fov_angle + where_in_fov);
 }
@@ -24,7 +24,7 @@ static double	get_angle(t_game *game, int x)
 static double	get_dist_hit(t_game *game, double ray_angle, t_dda *dda)
 {
 	double	dist_hit;
-	double  correct_dist;
+	double	correct_dist;
 
 	if (dda->side == 0)
 		dist_hit = (dda->map_x - game->player.x
@@ -64,7 +64,7 @@ void	draw_wall_column(t_game *game, int x, double wall_height, t_dda *dda)
 	y = (int)start;
 	while (y <= (int)end)
 	{
-		my_mlx_pixel_put(&game->img, x, y, 0xFFFFFF);
+		my_mlx_pixel_put(&game->img, x, y, 0xFF93FF);
 		y++;
 	}
 }
@@ -89,7 +89,7 @@ void	render_walls(t_game *game)
 	double	dist_hit;
 	double	wall_height;
 
-	game->config.player_angle = atan2(game->player.dir_y, game->player.dir_x);
+	// game->config.player_angle = atan2(game->player.dir_y, game->player.dir_x);
 	x = 0;
 	while (x < WIDTH)
 	{
