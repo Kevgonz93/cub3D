@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:13:18 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/10 18:00:56 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/10 20:46:08 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ static void	set_map(t_game *game)
 
 void	test_main(t_game *game)
 {
+	if (is_cub("test.cub"))
+		printf("is_cub works for tests!\n");
 	// 1) Config “a mano”
 	game->config.fov = 60.0 * PI / 180.0;   // radianes
 	game->config.player_angle = 0.0;
@@ -112,18 +114,18 @@ int	main(int argc, char **argv)
 	(void)argc;
 	printf("validating arguments...\n");
 	// 	1. Validar argumentos
-	if (argc != 2)
-		return (error("Usage: ./cub3D <map.cub>"));
-	if (!is_cub(argv[1]))
-		return (error("Map must have .cub format"));
+	// if (argc != 2)
+	// 	return (error("Usage: ./cub3D <map.cub>"));
+	// if (!is_cub(argv[1]))
+	// 	return (error("Map must have .cub format"));
 	printf("initializing game...\n");
 	//   2. Inicializar estructura
 	init_game(&game);
 	printf("parsing file...\n");
 	//   3. Parsear archivo .cub
-	if (parse_file(argv[1], &game))
-		return (free_game(&game, 1));
-	//test_main(&game);
+	// if (parse_file(argv[1], &game))
+	// 	return (free_game(&game, 1));
+	test_main(&game);
 	printf("initializing MLX...\n");
 	//	4. Inicializar MLX
 	if (init_mlx(&game) != 0)
