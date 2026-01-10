@@ -19,6 +19,12 @@ void	print_config(t_config *config)
 	}
 }
 
+void	print_player_data(t_game *game)
+{
+	printf("Player data: x %f, y %f, angle %f\n",game->player.x, game->player.y,
+		game->config.player_angle);
+}
+
 void	print_array(char** array)
 {
 	int	i;

@@ -12,18 +12,18 @@
 
 #include "includes/src.h"
 
-// static int	is_cub(char *arg)
-// {
-// 	int	len;
+static int	is_cub(char *arg)
+{
+	int	len;
 
-// 	len = ft_strlen(arg);
-// 	if (len <= 4)
-// 		return (0);
-// 	if (arg[len - 4] == '.' && arg[len - 3] == 'c' && arg[len - 2] == 'u'
-// 		&& arg[len - 1] == 'b')
-// 		return (1);
-// 	return (0);
-// }
+	len = ft_strlen(arg);
+	if (len <= 4)
+		return (0);
+	if (arg[len - 4] == '.' && arg[len - 3] == 'c' && arg[len - 2] == 'u'
+		&& arg[len - 1] == 'b')
+		return (1);
+	return (0);
+}
 
 static int	init_mlx(t_game *game)
 {
@@ -110,20 +110,20 @@ int	main(int argc, char **argv)
 
 	(void)argv;
 	(void)argc;
-	// printf("validating arguments...\n");
-	// // 	1. Validar argumentos
-	// if (argc != 2)
-	// 	return (error("Usage: ./cub3D <map.cub>"));
-	// if (!is_cub(argv[1]))
-	// 	return (error("Map must have .cub format"));
-	// printf("initializing game...\n");
-	// //   2. Inicializar estructura
+	printf("validating arguments...\n");
+	// 	1. Validar argumentos
+	if (argc != 2)
+		return (error("Usage: ./cub3D <map.cub>"));
+	if (!is_cub(argv[1]))
+		return (error("Map must have .cub format"));
+	printf("initializing game...\n");
+	//   2. Inicializar estructura
 	init_game(&game);
-	// printf("parsing file...\n");
-	// //   3. Parsear archivo .cub
-	// if (parse_file(argv[1], &game) == -1)
-	// 	return (free_game(&game, 1));
-	test_main(&game);
+	printf("parsing file...\n");
+	//   3. Parsear archivo .cub
+	if (parse_file(argv[1], &game) == -1)
+		return (free_game(&game, 1));
+	//test_main(&game);
 	printf("initializing MLX...\n");
 	//	4. Inicializar MLX
 	if (init_mlx(&game) != 0)

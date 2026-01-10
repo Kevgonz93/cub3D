@@ -1,5 +1,6 @@
 #include "../../includes/cub3d.h"
-
+#include "../../includes/src.h"
+/*
 char	*ft_strjoin(char *dst, char *src)
 {
 	int		i;
@@ -27,7 +28,7 @@ char	*ft_strjoin(char *dst, char *src)
 	free(dst);
 	return (new_str);
 }
-
+*/
 char	*make_full_line(int width, char c)
 {
 	char	*line;
