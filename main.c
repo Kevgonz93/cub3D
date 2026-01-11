@@ -130,6 +130,10 @@ int	main(int argc, char **argv)
 	//	4. Inicializar MLX
 	if (init_mlx(&game) != 0)
 		return (1);
+	printf("loading textures...\n");
+	//  5. Cargar texturas
+	if (init_textures(&game))
+		return (1);
 	printf("registering hooks...\n");
 	//   5. Registrar hooks
 	init_hooks(&game);
