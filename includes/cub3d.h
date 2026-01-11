@@ -130,6 +130,18 @@ typedef struct s_map
 	int		height;			// Alto del mapa
 }	t_map;
 
+typedef struct	s_tex
+{
+	//char	*path;
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_tex;
+
 // Configuración del archivo .cub
 typedef struct s_config
 {
@@ -142,6 +154,10 @@ typedef struct s_config
 	double				fov;			// Campo de visión
 	double				player_angle;	// Ángulo inicial del jugador
 	t_map				*map;
+	t_tex				no;
+	t_tex				so;
+	t_tex				we;
+	t_tex				ea;
 }	t_config;
 
 typedef struct s_exit

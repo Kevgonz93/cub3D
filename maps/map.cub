@@ -1,7 +1,7 @@
-NO ./textures/brick.xpm
-SO ./textures/tile1.xpm
-WE ./textures/wood.xpm
-EA ./textures/tile2.xpm
+NO ./textures/tile085.xpm
+SO ./textures/tile092.xpm
+WE ./textures/tile171.xpm
+EA ./textures/tile245.xpm
 
 F 220,100,0
 C 225,30,0

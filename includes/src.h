@@ -114,6 +114,9 @@ int		validate_map(t_map *map);
 // GRID_PADDED.C
 char	**get_grid_padded(t_map *map);
 
+// TEXTURES_DATA.C
+int    init_textures(t_game *game);
+
 // ------------------------------------------------------
 // 							RENDERING
 // ------------------------------------------------------
