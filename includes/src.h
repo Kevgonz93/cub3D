@@ -137,6 +137,9 @@ void	paint_walls(t_game *game);
 int		render_frame(t_game *game);
 void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color);
 
+// TEXTURIZED_WALL.C
+void	draw_wall_column_texturized(t_game *game, int x, double wall_height, t_dda *dda, double dist_hit);
+
 // ------------------------------------------------------
 // 							DEBUG
 // ------------------------------------------------------

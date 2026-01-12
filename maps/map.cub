@@ -1,7 +1,7 @@
-NO ./textures/tile085.xpm
-SO ./textures/tile092.xpm
-WE ./textures/tile171.xpm
-EA ./textures/tile245.xpm
+NO ./textures/hedge64.xpm
+SO ./textures/support64.xpm
+WE ./textures/brick64.xpm
+EA ./textures/light64.xpm
 
 F 220,100,0
 C 225,30,0

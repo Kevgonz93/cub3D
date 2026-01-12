@@ -84,6 +84,17 @@
 //                     ESTRUCTURAS
 // ------------------------------------------------------
 
+// Estructura para dibujear la línea texturizada
+typedef struct s_line
+{
+	int	screen_x;	// X de la pantalla
+	int	screen_y;	// Y de la pantalla
+	int	start_y;	// punto de partida en la Y para dibujar la pared
+	int	end_y;		// punto final de la pared en la Y
+	int	tex_x;		// coordenada X de la textura
+	int	tex_y;		// coordenada Y de la textura
+}	t_line;
+
 // Estructura para el algoritmo DDA
 typedef struct s_dda
 {
