@@ -44,14 +44,15 @@ static int	parse_textures(char **lines, t_game *game, int *map_index)
 
 static void	get_player_angle(t_game *game, char p)
 {
+	//el ángulo es perpendicular a X
 	if (p == 'N')
-		game->config.player_angle = 0;
-	else if (p == 'S')
-		game->config.player_angle = PI;
-	else if (p == 'E')
-		game->config.player_angle = PI / 2;
-	else if (p == 'W')
 		game->config.player_angle = 3 * PI / 2;
+	else if (p == 'S')
+		game->config.player_angle = PI / 2;
+	else if (p == 'E')
+		game->config.player_angle = 0;
+	else if (p == 'W')
+		game->config.player_angle = PI;
 }
 
 static int	get_player_data(t_game *game)

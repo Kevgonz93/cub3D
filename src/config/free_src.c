@@ -26,6 +26,7 @@ static void	free_map(t_map *map)
 	{
 		if (map->grid)
 			free_array(map->grid);
+		free(map);
 	}
 }
 
@@ -54,6 +55,7 @@ void	free_config(t_game *game)
 	if (game->config.map)
 	{
 		free_map(game->config.map);
+
 		game->config.map = NULL;
 	}
 }
