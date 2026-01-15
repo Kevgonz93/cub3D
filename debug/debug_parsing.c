@@ -4,10 +4,10 @@ void	print_config(t_config *config)
 {
 	int	i;
 	
-	printf("NO: %s\n", config->no_tex);
-	printf("SO: %s\n", config->so_tex);
-	printf("WE: %s\n", config->we_tex);
-	printf("EA: %s\n", config->ea_tex);
+	printf("NO: %s\n", config->no.path);
+	printf("SO: %s\n", config->so.path);
+	printf("WE: %s\n", config->we.path);
+	printf("EA: %s\n", config->ea.path);
 	printf("F: %X\n", config->floor_color);
 	printf("C: %X\n", config->ceil_color);
 	printf("GRID:\n");

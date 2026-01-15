@@ -89,10 +89,10 @@ void	test_main(t_game *game)
 	game->config.player_angle = 0.0;
 	game->config.floor_color = 0x333333;
 	game->config.ceil_color = 0x99AADD;
-	game->config.no_tex = NULL;
-	game->config.so_tex = NULL;
-	game->config.we_tex = NULL;
-	game->config.ea_tex = NULL;
+	game->config.no.path = NULL;
+	game->config.so.path = NULL;
+	game->config.we.path = NULL;
+	game->config.ea.path = NULL;
 	// 2) Mapa “a mano”
 	set_map(game);
 	// 3) Jugador “a mano” (en una celda '0')
@@ -133,7 +133,7 @@ int	main(int argc, char **argv)
 	printf("loading textures...\n");
 	//  5. Cargar texturas
 	if (init_textures(&game))
-		return (1);
+		return (free_game(&game, 1));
 	printf("registering hooks...\n");
 	//   5. Registrar hooks
 	init_hooks(&game);
