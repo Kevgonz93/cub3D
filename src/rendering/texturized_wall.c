@@ -48,14 +48,8 @@ void	draw_wall_column_texturized(t_game *game, int x, double wall_height, t_dda 
     
     // calcular el inicio y final de la pared en la Y de la pantalla
 	line.start_y = (HEIGHT / 2.0) - (wall_height / 2.0);
-	if (line.start_y < 0)
-        line.start_y = 0;
 	line.end_y = (HEIGHT / 2.0) + (wall_height / 2.0);
-	if (line.end_y >= HEIGHT)
-        line.end_y = HEIGHT - 1;
-	//y = (int)start;
     texture = determine_texture(game, dda);
-    //texture = &game->config.no;
     wall_x = find_texture_hit_coordinate(game, dda, dist_hit);
     line.tex_x = (int)(wall_x * texture->width);
 	line.screen_y = (int)line.start_y;
