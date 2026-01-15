@@ -21,12 +21,24 @@ void	init_img(t_img *img)
 	img->endian = 0;
 }
 
+void	init_tex(t_tex *tex)
+{
+	tex->path = NULL;
+	tex->img = NULL;
+	tex->addr = NULL;
+	tex->bpp = 0;
+	tex->endian = 0;
+	tex->height = 0;
+	tex->line_len = 0;
+	tex->width = 0;
+}
+
 void	init_config(t_config *config)
 {
-	config->no_tex = NULL;
-	config->so_tex = NULL;
-	config->we_tex = NULL;
-	config->ea_tex = NULL;
+	init_tex(&config->no);
+	init_tex(&config->so);
+	init_tex(&config->we);
+	init_tex(&config->ea);
 	config->floor_color = 0;
 	config->ceil_color = 0;
 	config->fov = PI / 3;

@@ -143,7 +143,7 @@ typedef struct s_map
 
 typedef struct	s_tex
 {
-	//char	*path;
+	char	*path;
 	void	*img;
 	char	*addr;
 	int		width;
@@ -156,10 +156,10 @@ typedef struct	s_tex
 // Configuración del archivo .cub
 typedef struct s_config
 {
-	char				*no_tex;		// Textura norte
-	char				*so_tex;		// Textura sur
-	char				*we_tex;		// Textura oeste
-	char				*ea_tex;		// Textura este
+	//char				*no_tex;		// Textura norte
+	//char				*so_tex;		// Textura sur
+	//char				*we_tex;		// Textura oeste
+	//char				*ea_tex;		// Textura este
 	unsigned int		floor_color;	// Color del suelo
 	unsigned int		ceil_color;		// Color del techo
 	double				fov;			// Campo de visión

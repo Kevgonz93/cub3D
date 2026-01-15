@@ -21,6 +21,7 @@ typedef struct s_map    t_map;
 typedef struct s_dda    t_dda;
 typedef struct s_config t_config;
 typedef struct s_player t_player;
+typedef struct s_tex    t_tex;
 
 // ------------------------------------------------------
 // 							UTILS
@@ -69,6 +70,7 @@ void	init_img(t_img *img);
 void	init_config(t_config *config);
 void	init_player(t_player *player);
 void	init_game(t_game *game);
+void	init_tex(t_tex *tex);
 
 // ------------------------------------------------------
 // 							EVENTS

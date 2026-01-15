@@ -12,6 +12,17 @@
 
 #include "../../includes/src.h"
 
+static void	free_tex(t_game *game, t_tex *tex)
+{
+	if (tex->img && game->mlx)
+		mlx_destroy_image(game->mlx, tex->img);
+	tex->img = NULL;
+	tex->addr = NULL;
+	if (tex->path)
+		free(tex->path);
+	tex->path = NULL;
+}
+
 void	free_img(t_game *game)
 {
 	if (game->img.img && game->mlx)
@@ -32,26 +43,10 @@ static void	free_map(t_map *map)
 
 void	free_config(t_game *game)
 {
-	if (game->config.no_tex)
-	{
-		free(game->config.no_tex);
-		game->config.no_tex = NULL;
-	}
-	if (game->config.so_tex)
-	{
-		free(game->config.so_tex);
-		game->config.so_tex = NULL;
-	}
-	if (game->config.we_tex)
-	{
-		free(game->config.we_tex);
-		game->config.we_tex = NULL;
-	}
-	if (game->config.ea_tex)
-	{
-		free(game->config.ea_tex);
-		game->config.ea_tex = NULL;
-	}
+	free_tex(game, &game->config.no);
+	free_tex(game, &game->config.so);
+	free_tex(game, &game->config.we);
+	free_tex(game, &game->config.ea);
 	if (game->config.map)
 	{
 		free_map(game->config.map);

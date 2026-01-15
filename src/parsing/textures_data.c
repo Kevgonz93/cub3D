@@ -16,13 +16,13 @@ static int    load_texture(t_game *game, t_tex *tex, char *path)
 
 int    init_textures(t_game *game)
 {
-    if (load_texture(game, &game->config.no, game->config.no_tex))
+    if (load_texture(game, &game->config.no, game->config.no.path))
         return (1);
-    if (load_texture(game, &game->config.so, game->config.so_tex))
+    if (load_texture(game, &game->config.so, game->config.so.path))
         return (1); 
-    if (load_texture(game, &game->config.we, game->config.we_tex))
+    if (load_texture(game, &game->config.we, game->config.we.path))
         return (1);
-    if (load_texture(game, &game->config.ea, game->config.ea_tex))
+    if (load_texture(game, &game->config.ea, game->config.ea.path))
         return (1);
     return (0);
 }

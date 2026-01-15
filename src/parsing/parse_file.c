@@ -14,8 +14,8 @@
 
 static bool	all_textures_found(t_game *game)
 {
-	if (game->config.no_tex && game->config.so_tex && game->config.we_tex
-		&& game->config.ea_tex && game->config.floor_color > 0
+	if (game->config.no.path && game->config.so.path && game->config.we.path
+		&& game->config.ea.path && game->config.floor_color > 0
 		&& game->config.ceil_color > 0)
 		return (1);
 	return (0);
@@ -34,7 +34,10 @@ static int	parse_textures(char **lines, t_game *game, int *map_index)
 			|| !strncmp(lines[i], "WE", 2) || !strncmp(lines[i], "EA", 2))
 			get_tex(lines[i], game);
 		else if (!strncmp(lines[i], "F", 1) || !strncmp(lines[i], "C", 1))
-			get_color(lines[i], game);
+		{
+			if (get_color(lines[i], game))
+				return (1);
+		}
 		else
 			return (error("Unexpected line"));
 	}
