@@ -21,6 +21,7 @@ typedef struct s_map    t_map;
 typedef struct s_dda    t_dda;
 typedef struct s_config t_config;
 typedef struct s_player t_player;
+typedef struct s_tex    t_tex;
 
 // ------------------------------------------------------
 // 							UTILS
@@ -69,6 +70,7 @@ void	init_img(t_img *img);
 void	init_config(t_config *config);
 void	init_player(t_player *player);
 void	init_game(t_game *game);
+void	init_tex(t_tex *tex);
 
 // ------------------------------------------------------
 // 							EVENTS
@@ -114,6 +116,9 @@ int		validate_map(t_map *map);
 // GRID_PADDED.C
 char	**get_grid_padded(t_map *map);
 
+// TEXTURES_DATA.C
+int    init_textures(t_game *game);
+
 // ------------------------------------------------------
 // 							RENDERING
 // ------------------------------------------------------
@@ -133,6 +138,9 @@ void	paint_walls(t_game *game);
 // RENDER.C
 int		render_frame(t_game *game);
 void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color);
+
+// TEXTURIZED_WALL.C
+void	draw_wall_column_texturized(t_game *game, int x, double wall_height, t_dda *dda, double dist_hit);
 
 // ------------------------------------------------------
 // 							DEBUG

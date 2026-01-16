@@ -98,6 +98,7 @@ void	render_walls(t_game *game)
 		dist_hit = get_dist_hit(game, ray_angle, &dda);
 		wall_height = get_height_wall(dist_hit, game);
 		draw_wall_column(game, x, wall_height, &dda);
+		draw_wall_column_texturized(game, x, wall_height, &dda, dist_hit);
 		x++;
 	}
 }

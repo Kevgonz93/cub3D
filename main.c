@@ -89,10 +89,10 @@ void	test_config(t_game *game)
 	game->config.player_angle = 0.0;
 	game->config.floor_color = 0x333333;
 	game->config.ceil_color = 0x99AADD;
-	game->config.no_tex = NULL;
-	game->config.so_tex = NULL;
-	game->config.we_tex = NULL;
-	game->config.ea_tex = NULL;
+	game->config.no.path = NULL;
+	game->config.so.path = NULL;
+	game->config.we.path = NULL;
+	game->config.ea.path = NULL;
 	// 2) Mapa “a mano”
 	test_set_map(game);
 	// 3) Jugador “a mano” (en una celda '0')
@@ -114,22 +114,26 @@ int	main(int argc, char **argv)
 	(void)argc;
 	printf("validating arguments...\n");
 	// 	1. Validar argumentos
-	// if (argc != 2)
-	// 	return (error("Usage: ./cub3D <map.cub>"));
-	// if (!is_cub(argv[1]))
-	// 	return (error("Map must have .cub format"));
+	if (argc != 2)
+		return (error("Usage: ./cub3D <map.cub>"));
+	if (!is_cub(argv[1]))
+		return (error("Map must have .cub format"));
 	printf("initializing game...\n");
 	//   2. Inicializar estructura
 	init_game(&game);
 	printf("parsing file...\n");
 	//   3. Parsear archivo .cub
-	// if (parse_file(argv[1], &game))
-	// 	return (free_game(&game, 1));
-	test_config(&game);
+	if (parse_file(argv[1], &game))
+		return (free_game(&game, 1));
+	//test_main(&game);
 	printf("initializing MLX...\n");
 	//	4. Inicializar MLX
 	if (init_mlx(&game) != 0)
 		return (1);
+	printf("loading textures...\n");
+	//  5. Cargar texturas
+	if (init_textures(&game))
+		return (free_game(&game, 1));
 	printf("registering hooks...\n");
 	//   5. Registrar hooks
 	init_hooks(&game);

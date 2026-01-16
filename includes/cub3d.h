@@ -30,10 +30,15 @@
 //                     CONSTANTES
 // ------------------------------------------------------
 // Dimensiones de la ventana
-# define WIDTH  1000
-# define HEIGHT 700
-# define TILE 10 // PARA DEBUGEAR, QUITAR LUEGO
-
+# ifdef __APPLE__
+#  define WIDTH  1000
+#  define HEIGHT 700
+#  define TILE 10 // PARA DEBUGEAR, QUITAR LUEGO
+# elif defined(__linux__)
+#  define WIDTH  800
+#  define HEIGHT 500
+#  define TILE 8 // PARA DEBUGEAR, QUITAR LUEGO
+# endif
 // Variables matemáticas
 # define PI		3.14159265358979323846
 
@@ -78,6 +83,17 @@
 // ------------------------------------------------------
 //                     ESTRUCTURAS
 // ------------------------------------------------------
+
+// Estructura para dibujear la línea texturizada
+typedef struct s_line
+{
+	int	screen_x;	// X de la pantalla
+	int	screen_y;	// Y de la pantalla
+	int	start_y;	// punto de partida en la Y para dibujar la pared
+	int	end_y;		// punto final de la pared en la Y
+	int	tex_x;		// coordenada X de la textura
+	int	tex_y;		// coordenada Y de la textura
+}	t_line;
 
 // Estructura para el algoritmo DDA
 typedef struct s_dda
@@ -125,18 +141,34 @@ typedef struct s_map
 	int		height;			// Alto del mapa
 }	t_map;
 
+typedef struct	s_tex
+{
+	char	*path;
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_tex;
+
 // Configuración del archivo .cub
 typedef struct s_config
 {
-	char				*no_tex;		// Textura norte
-	char				*so_tex;		// Textura sur
-	char				*we_tex;		// Textura oeste
-	char				*ea_tex;		// Textura este
+	//char				*no_tex;		// Textura norte
+	//char				*so_tex;		// Textura sur
+	//char				*we_tex;		// Textura oeste
+	//char				*ea_tex;		// Textura este
 	unsigned int		floor_color;	// Color del suelo
 	unsigned int		ceil_color;		// Color del techo
 	double				fov;			// Campo de visión
 	double				player_angle;	// Ángulo inicial del jugador
 	t_map				*map;
+	t_tex				no;
+	t_tex				so;
+	t_tex				we;
+	t_tex				ea;
 }	t_config;
 
 typedef struct s_exit

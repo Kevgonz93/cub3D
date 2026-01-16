@@ -19,6 +19,25 @@ int draw_tile(t_game *game, int x, int y, unsigned int color)
     return (0);
 }
 
+int draw_player(t_game *game, double x, double y, unsigned int color)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (i < 4)
+    {
+        j = 0;
+        while (j < 4)
+        {
+            my_mlx_pixel_put(&game->img, x + i, y + j, color);
+            j++;
+        }
+        i++;
+    }
+    return (0);
+}
+
 int render_2d_map(t_game *game)
 {
 	int			x;
@@ -36,15 +55,21 @@ int render_2d_map(t_game *game)
             aux_y = HEIGHT - (map->height * TILE) + (y * TILE);
 			if (map->grid[y][x] == '1')
 				draw_tile(game, x * TILE, aux_y, (0 << 16 | 0 << 8 | 205));
-			else if (map->grid[y][x] == '0')
+            else if (map->grid[y][x] == '0')
                 draw_tile(game, x * TILE, aux_y, (250 << 16 | 235 << 8 | 215));
             else if (map->grid[y][x] == 'S' || map->grid[y][x] == 'N'
                 || map->grid[y][x] == 'E' || map->grid[y][x] == 'W')
-                draw_tile(game, x * TILE, aux_y, (128 << 16 | 0 << 8 | 0));
-			x++;
+            {
+                draw_tile(game, x * TILE, aux_y, (250 << 16 | 235 << 8 | 215));
+                draw_player(game, game->player.x * TILE,
+                    HEIGHT - (map->height * TILE) + (game->player.y * TILE),
+                    (128 << 16 | 0 << 8 | 0));
+            }
+            x++;
 		}
 		y++;
 	}
+    //draw_player(game, game->player.x, game->player.y, (250 << 16 | 235 << 8 | 215));
 	//mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);
 }
