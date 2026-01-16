@@ -6,7 +6,7 @@
 /*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:13:18 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/10 20:46:08 by kegonza          ###   ########.fr       */
+/*   Updated: 2026/01/10 21:00:25 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	init_hooks(t_game *game)
 	// mlx_loop_hook(game->mlx, render_2d_map, game); // QUITAR
 }
 
-static void	set_map(t_game *game)
+static void	test_set_map(t_game *game)
 {
 	static t_map	map;
 
@@ -80,7 +80,7 @@ static void	set_map(t_game *game)
 	game->config.map = &map;
 }
 
-void	test_main(t_game *game)
+void	test_config(t_game *game)
 {
 	if (is_cub("test.cub"))
 		printf("is_cub works for tests!\n");
@@ -94,7 +94,7 @@ void	test_main(t_game *game)
 	game->config.we_tex = NULL;
 	game->config.ea_tex = NULL;
 	// 2) Mapa “a mano”
-	set_map(game);
+	test_set_map(game);
 	// 3) Jugador “a mano” (en una celda '0')
 	game->player.x = 2.5;
 	game->player.y = 2.5;
@@ -125,7 +125,7 @@ int	main(int argc, char **argv)
 	//   3. Parsear archivo .cub
 	// if (parse_file(argv[1], &game))
 	// 	return (free_game(&game, 1));
-	test_main(&game);
+	test_config(&game);
 	printf("initializing MLX...\n");
 	//	4. Inicializar MLX
 	if (init_mlx(&game) != 0)
