@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/10 20:57:03 by kegonza          ###   ########.fr       */
+/*   Updated: 2026/01/17 12:40:47 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 #  define HEIGHT 700
 #  define TILE 10 // PARA DEBUGEAR, QUITAR LUEGO
 # elif defined(__linux__)
-#  define WIDTH  800
-#  define HEIGHT 500
+#  define WIDTH  1000 // 800
+#  define HEIGHT 700  // 500
 #  define TILE 8 // PARA DEBUGEAR, QUITAR LUEGO
 # endif
 // Variables matemáticas

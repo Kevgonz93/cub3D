@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:42:07 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/10 18:28:52 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/17 13:28:49 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ static int	get_player_data(t_game *game)
 				game->player.x = j;
 				game->player.y = i;
 				get_player_angle(game, map->grid[i][j]);
-				game->player.dir_x = cos(game->config.player_angle);
-				game->player.dir_y = sin(game->config.player_angle);
-				game->player.plane_x = 0.0;
-				game->player.plane_y = 0.0;
+				//game->player.dir_x = cos(game->config.player_angle);
+				//game->player.dir_y = sin(game->config.player_angle);
+				//game->player.plane_x = 0.0;
+				//game->player.plane_y = 0.0;
 				game->config.fov = PI / 3;
 				return (0);
 			}
@@ -98,7 +98,7 @@ int	parse_file(char *file, t_game *game)
 
 	buffer = get_buffer(file);
 	if (!buffer)
-		return (error("Buffer: Malloc failed"));
+		return (1);
 	if (parse_textures(buffer, game, &map_index))
 	{
 		free_array(buffer);
