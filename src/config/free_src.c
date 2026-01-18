@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:52:28 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/10 18:05:16 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/17 13:14:27 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ int	free_game(t_game *game, int ret)
 	if (game->mlx && game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	game->win = NULL;
-	free(game->mlx); // revisarlo en Linux (posible doble free)
-	game->mlx = NULL;
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx); // revisarlo en Linux (posible doble free) - esto sí tiene que estar en linux con su función destroy_display
+		game->mlx = NULL;
+	}
 	return (ret);
 }

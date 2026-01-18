@@ -46,7 +46,7 @@ static int	get_grid(char **buffer, t_map *map, int map_index)
 	{
 		grid[i] = cpy_line(buffer[map_index], map);
 		if (!grid[i])
-			return (1);
+			return (free(grid), 1);
 		i++;
 		map_index++;
 	}
@@ -61,7 +61,7 @@ static int	get_dimensions(char **buffer, t_map *map, int map_index)
 
 	map->height = 0;
 	map->width = 0;
-	while (buffer[map_index])
+	while (buffer && buffer[map_index])
 	{
 		map->height++;
 		tmp = ft_strlen(buffer[map_index]);
@@ -86,13 +86,17 @@ int	parse_map(char **buffer, t_game *game, int map_index)
 	while (!strcmp(buffer[map_index], "\n"))
 		map_index++;
 	if (get_dimensions(buffer, map, map_index))
-		return (1);
+		return (free(map), 1);
 	if (get_grid(buffer, map, map_index))
-		return (1);
+		return (free(map), 1);
 	/*if (get_grid_padded(buffer, map, map_index))
 		return (1);*/
 	if (validate_map(map))
+	{
+		free_array(map->grid);
+		free(map);
 		return (1);
+	}
 	//print_array(map->grid);
 	game->config.map = map;
 	return (0);

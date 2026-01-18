@@ -99,7 +99,7 @@ int	parse_file(char *file, t_game *game)
 
 	buffer = get_buffer(file);
 	if (!buffer)
-		return (error("Buffer: Malloc failed"));
+		return (1);
 	if (parse_textures(buffer, game, &map_index))
 	{
 		free_array(buffer);
