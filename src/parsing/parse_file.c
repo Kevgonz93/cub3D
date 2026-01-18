@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:42:07 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/10 18:28:52 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/18 18:57:36 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,10 @@ static int	get_player_data(t_game *game)
 			if (map->grid[i][j] == 'N' || map->grid[i][j] == 'S' ||
 				map->grid[i][j] == 'E' || map->grid[i][j] == 'W')
 			{
-				game->player.x = j;
-				game->player.y = i;
 				get_player_angle(game, map->grid[i][j]);
+				game->player.x = (j + 0.5) * TILE_SIZE;
+				game->player.y = (i + 0.5) * TILE_SIZE;
+				map->grid[i][j] = '0';
 				game->player.dir_x = cos(game->config.player_angle);
 				game->player.dir_y = sin(game->config.player_angle);
 				game->player.plane_x = 0.0;

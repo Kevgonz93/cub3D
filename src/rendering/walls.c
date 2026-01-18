@@ -21,23 +21,6 @@ static double	get_angle(t_game *game, int x)
 	return (initial_fov_angle + where_in_fov);
 }
 
-static double	get_dist_hit(t_game *game, double ray_angle, t_dda *dda)
-{
-	double	dist_hit;
-	double	correct_dist;
-
-	if (dda->side == 0)
-		dist_hit = (dda->map_x - game->player.x
-				+ (1 - dda->step_x) / 2) / dda->ray_dir_x;
-	else
-		dist_hit = (dda->map_y - game->player.y
-				+ (1 - dda->step_y) / 2) / dda->ray_dir_y;
-	correct_dist = dist_hit * cos(ray_angle - game->config.player_angle);
-	if (correct_dist < 0.00001)
-		correct_dist = 0.00001;
-	return (correct_dist);
-}
-
 static double	get_height_wall(double dist_corrected, t_game *game)
 {
 	double	plane_dist;
@@ -68,17 +51,22 @@ void	draw_wall_column(t_game *game, int x, double wall_height, t_dda *dda)
 		y++;
 	}
 }
-// FUNCIÓN PARA PINTAR LAS PAREDES EN ROJO (PARA PRUEBAS)
-void	paint_walls(t_game *game)
-{
-	int			x;
 
-	x = HEIGHT / 4;
-	while (x < 3 * HEIGHT / 4)
-	{
-		my_mlx_pixel_put(&game->img, WIDTH / 2 - 1, x, 0xFF0000);
-		x++;
-	}
+double	get_dist_hit_raw(t_game *game, t_dda *dda)
+{
+	double	dist_hit;
+	double	pos_x;
+	double	pos_y;
+
+	pos_x = game->player.x / (double)TILE_SIZE;
+	pos_y = game->player.y / (double)TILE_SIZE;
+	if (dda->side == 0)
+		dist_hit = (dda->map_x - pos_x
+				+ (1 - dda->step_x) / 2) / dda->ray_dir_x;
+	else
+		dist_hit = (dda->map_y - pos_y
+				+ (1 - dda->step_y) / 2) / dda->ray_dir_y;
+	return (dist_hit);
 }
 
 void	render_walls(t_game *game)
@@ -86,19 +74,21 @@ void	render_walls(t_game *game)
 	int		x;
 	double	ray_angle;
 	t_dda	dda;
-	double	dist_hit;
+	double	raw_dist;
+	double	correct_dist;
 	double	wall_height;
 
-	// game->config.player_angle = atan2(game->player.dir_y, game->player.dir_x);
 	x = 0;
 	while (x < WIDTH)
 	{
 		ray_angle = get_angle(game, x);
 		run_dda(game, ray_angle, &dda);
-		dist_hit = get_dist_hit(game, ray_angle, &dda);
-		wall_height = get_height_wall(dist_hit, game);
-		draw_wall_column(game, x, wall_height, &dda);
-		draw_wall_column_texturized(game, x, wall_height, &dda, dist_hit);
+		raw_dist = get_dist_hit_raw(game, &dda);
+		correct_dist = raw_dist * cos(ray_angle - game->config.player_angle);
+		if (correct_dist < 0.00001)
+			correct_dist = 0.00001;
+		wall_height = get_height_wall(correct_dist, game);
+		draw_wall_column_texturized(game, x, wall_height, &dda, raw_dist);
 		x++;
 	}
 }
