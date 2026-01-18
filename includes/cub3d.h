@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/17 12:40:47 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/18 20:13:12 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,9 @@
 
 // Velocidades de movimiento y rotación
 # define ROT_SPEED		0.05
-# define MOVE_SPEED		0.03
+# define MOVE_SPEED		4.0
+# define TILE_SIZE		64
+# define PLAYER_RADIUS	8
 
 // ------------------------------------------------------
 //                     ESTRUCTURAS

@@ -58,7 +58,7 @@ static int	get_grid(char **buffer, t_map *map, int map_index)
 static int	get_dimensions(char **buffer, t_map *map, int map_index)
 {
 	int	tmp;
-	
+
 	map->height = 0;
 	map->width = 0;
 	while (buffer && buffer[map_index])
