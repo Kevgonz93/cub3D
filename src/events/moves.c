@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/24 16:02:24 by akwadran          #+#    #+#             */
+/*   Updated: 2026/01/24 16:47:10 by akwadran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/src.h"
 
 void	rotate_player(t_game *game)
@@ -16,38 +28,55 @@ void	rotate_player(t_game *game)
 	}
 }
 
-static void	side_moves(t_game *game)
+static void	add_forback_moves(t_game *game, float *dx, float *dy)
 {
+	float	angle;
+
+	angle = game->config.player_angle;
+	if (game->keys[KEY_W])
+	{
+		*dx += cos(angle) * MOVE_SPEED;
+		*dy += sin(angle) * MOVE_SPEED;
+	}
+	if (game->keys[KEY_S])
+	{
+		*dx -= cos(angle) * MOVE_SPEED;
+		*dy -= sin(angle) * MOVE_SPEED;
+	}
+}
+
+static void	add_side_moves(t_game *game, float *dx, float *dy)
+{
+	float	angle;
+
+	angle = game->config.player_angle;
 	if (game->keys[KEY_A])
 	{
-		game->player.x += cos(game->config.player_angle - PI / 2)
-			* MOVE_SPEED;
-		game->player.y += sin(game->config.player_angle - PI / 2)
-			* MOVE_SPEED;
+		*dx += cos(angle - (PI / 2)) * MOVE_SPEED;
+		*dy += sin(angle - (PI / 2)) * MOVE_SPEED;
 	}
 	if (game->keys[KEY_D])
 	{
-		game->player.x += cos(game->config.player_angle + PI / 2)
-			* MOVE_SPEED;
-		game->player.y += sin(game->config.player_angle + PI / 2)
-			* MOVE_SPEED;
+		*dx += cos(angle + (PI / 2)) * MOVE_SPEED;
+		*dy += sin(angle + (PI / 2)) * MOVE_SPEED;
 	}
 }
 
 void	move_player(t_game *game)
 {
-	if (game->keys[KEY_W])
-	{
-		game->player.x += cos(game->config.player_angle) * MOVE_SPEED;
-		game->player.y += sin(game->config.player_angle) * MOVE_SPEED;
-	}
-	if (game->keys[KEY_S])
-	{
-		game->player.x -= cos(game->config.player_angle) * MOVE_SPEED;
-		game->player.y -= sin(game->config.player_angle) * MOVE_SPEED;
-	}
-	if (game->keys[KEY_A] || game->keys[KEY_D])
-		side_moves(game);
+	float	dx;
+	float	dy;
+
+	dx = 0.0f;
+	dy = 0.0f;
+	printf("pos=(%.2f,%.2f) cell=(%d,%d)\n",
+		game->player.x, game->player.y,
+		(int)(game->player.x / TILE_SIZE),
+		(int)(game->player.y / TILE_SIZE));
+	add_forback_moves(game, &dx, &dy);
+	add_side_moves(game, &dx, &dy);
+	if (dx != 0.0f || dy != 0.0f)
+		make_move(game, dx, dy);
 }
 
 void	update_player(t_game *game)

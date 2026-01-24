@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/17 12:40:47 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/24 17:53:54 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,9 @@
 
 // Velocidades de movimiento y rotación
 # define ROT_SPEED		0.05
-# define MOVE_SPEED		0.03
+# define MOVE_SPEED		4.0
+# define TILE_SIZE		64
+# define PLAYER_RADIUS	8
 
 // ------------------------------------------------------
 //                     ESTRUCTURAS
@@ -151,6 +153,7 @@ typedef struct	s_tex
 	int		bpp;
 	int		line_len;
 	int		endian;
+	int		num;
 }	t_tex;
 
 // Configuración del archivo .cub
@@ -161,7 +164,9 @@ typedef struct s_config
 	//char				*we_tex;		// Textura oeste
 	//char				*ea_tex;		// Textura este
 	unsigned int		floor_color;	// Color del suelo
+	bool				floor_color_found;
 	unsigned int		ceil_color;		// Color del techo
+	bool				ceil_color_found;
 	double				fov;			// Campo de visión
 	double				player_angle;	// Ángulo inicial del jugador
 	t_map				*map;

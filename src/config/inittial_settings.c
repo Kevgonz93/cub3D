@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:12:43 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/10 18:27:23 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/24 16:54:03 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,6 @@ void	init_img(t_img *img)
 	img->bpp = 0;
 	img->line_len = 0;
 	img->endian = 0;
-}
-
-void	init_tex(t_tex *tex)
-{
-	tex->path = NULL;
-	tex->img = NULL;
-	tex->addr = NULL;
-	tex->bpp = 0;
-	tex->endian = 0;
-	tex->height = 0;
-	tex->line_len = 0;
-	tex->width = 0;
-}
-
-void	init_config(t_config *config)
-{
-	init_tex(&config->no);
-	init_tex(&config->so);
-	init_tex(&config->we);
-	init_tex(&config->ea);
-	config->floor_color = 0;
-	config->ceil_color = 0;
-	config->fov = PI / 3;
-	config->player_angle = 0;
-	config->map = NULL;
 }
 
 void	init_player(t_player *player)

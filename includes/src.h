@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   src.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/10 20:39:48 by kegonza          ###   ########.fr       */
+/*   Updated: 2026/01/24 16:54:53 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,11 @@ int		free_game(t_game *game, int ret);
 
 // INITTIAL_SETTINGS.C
 void	init_img(t_img *img);
-void	init_config(t_config *config);
 void	init_player(t_player *player);
 void	init_game(t_game *game);
+
+// INITTIAL_CONFIG_SETTINGS.C
+void	init_config(t_config *config);
 void	init_tex(t_tex *tex);
 
 // ------------------------------------------------------
@@ -80,6 +82,9 @@ void	init_tex(t_tex *tex);
 void	rotate_player(t_game *game);
 void	move_player(t_game *game);
 void	update_player(t_game *game);
+
+//MAKE_MOVE.C
+void	make_move(t_game *game, float dx, float dy);
 
 // CLOSING.C
 void	draw_exit_confirm_text(t_game *game);
@@ -118,6 +123,9 @@ char	**get_grid_padded(t_map *map);
 
 // TEXTURES_DATA.C
 int    init_textures(t_game *game);
+
+// PLAYER_DATA.C
+int	get_player_data(t_game *game);
 
 // ------------------------------------------------------
 // 							RENDERING

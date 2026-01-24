@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/24 16:02:01 by akwadran          #+#    #+#             */
+/*   Updated: 2026/01/24 18:54:23 by akwadran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/src.h"
 
 static void	fill_out_line(char *line, t_map *map)
@@ -22,7 +34,7 @@ static char	*cpy_line(char *buffer_line, t_map *map)
 
 	grid_line = (char *)malloc(sizeof(char) * (map->width + 1));
 	if (!grid_line)
-		return(error("Grid: Malloc failed"), NULL);
+		return (error("Grid: Malloc failed"), NULL);
 	len = ft_strlen(buffer_line);
 	if (buffer_line[len - 1] == '\n')
 		len--;
@@ -30,13 +42,12 @@ static char	*cpy_line(char *buffer_line, t_map *map)
 	if ((int)ft_strlen(grid_line) < map->width)
 		fill_out_line(grid_line, map);
 	return (grid_line);
-		
 }
 
 static int	get_grid(char **buffer, t_map *map, int map_index)
 {
 	char	**grid;
-	int	i;
+	int		i;
 
 	grid = (char **)malloc(sizeof(char *) * (map->height + 1));
 	if (!grid)
@@ -58,7 +69,7 @@ static int	get_grid(char **buffer, t_map *map, int map_index)
 static int	get_dimensions(char **buffer, t_map *map, int map_index)
 {
 	int	tmp;
-	
+
 	map->height = 0;
 	map->width = 0;
 	while (buffer && buffer[map_index])
@@ -89,15 +100,13 @@ int	parse_map(char **buffer, t_game *game, int map_index)
 		return (free(map), 1);
 	if (get_grid(buffer, map, map_index))
 		return (free(map), 1);
-	/*if (get_grid_padded(buffer, map, map_index))
-		return (1);*/
+	print_array(map->grid);
 	if (validate_map(map))
 	{
 		free_array(map->grid);
 		free(map);
 		return (1);
 	}
-	//print_array(map->grid);
 	game->config.map = map;
 	return (0);
 }
