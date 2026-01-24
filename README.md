@@ -1,3 +1,15 @@
+This project has been created as part of the 42 curriculum by <akwadran>[, <kegonzal>[]].
+
+# DESPCRIPTION
+
+# INSTRUCTIONS
+
+# RESOURCES
+
+
+
+
+
 # cub3d
 
 Proyecto **cub3D** de la escuela 42 (raycasting en 3D estilo Wolfenstein).

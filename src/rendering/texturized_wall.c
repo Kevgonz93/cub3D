@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texturized_wall.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/24 16:01:11 by akwadran          #+#    #+#             */
+/*   Updated: 2026/01/24 16:07:15 by akwadran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/src.h"
 
 static t_tex	*determine_texture(t_game *game, t_dda *dda)
@@ -26,7 +38,7 @@ static double	find_texture_hit_coordinate(t_game *game,
 		wall_x = pos_y + dist_hit * dda->ray_dir_y;
 	else
 		wall_x = pos_x + dist_hit * dda->ray_dir_x;
-	wall_x -= floor(wall_x); // proporción del ancho de la textura
+	wall_x -= floor(wall_x);
 	return (wall_x);
 }
 

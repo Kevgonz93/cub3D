@@ -1,14 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/24 16:01:28 by akwadran          #+#    #+#             */
+/*   Updated: 2026/01/24 18:55:50 by akwadran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/src.h"
 
 static int	validate_chars(char *line)
 {
-	int	i;
+	int		i;
+	bool	empty;
 
+	//printf("checkoing line %s\n", line);
+	empty = true;
 	i = 0;
 	while (line[i])
 	{
-		if (!(line[i] == '1' || line[i] == '0' || line[i] == 'N' || line[i] == 'S'
-			|| line[i] == 'E' || line[i] == 'W' || line[i] == ' '))
+		if (!(line[i] == ' '))
+			empty = false;
+		i++;
+	}
+	if (empty)
+		return (error("Map contains an empty line"));
+	i = 0;
+	while (line[i])
+	{
+		if (!(line[i] == '1' || line[i] == '0' || line[i] == 'N'
+				|| line[i] == 'S' || line[i] == 'E' || line[i] == 'W'
+				|| line[i] == ' '))
 			return (error("Map contains incorrect character"));
 		i++;
 	}
@@ -24,7 +49,8 @@ static int	find_player(char *line)
 	player = 0;
 	while (line[i])
 	{
-		if (line[i] == 'S' || line[i] == 'N' || line[i] == 'E' || line[i] == 'W')
+		if (line[i] == 'S' || line[i] == 'N' || line[i] == 'E'
+			|| line[i] == 'W')
 			player++;
 		i++;
 	}
@@ -43,9 +69,9 @@ static int	check_walls(char **grid, int x, int y, int height, int width)
 	{
 		grid[y][x] = 'x';
 		return (check_walls(grid, x - 1, y, height, width)
-		&& check_walls(grid, x, y - 1, height, width)
-		&& check_walls(grid, x + 1, y, height, width)
-		&& check_walls(grid, x, y + 1, height, width));
+			&& check_walls(grid, x, y - 1, height, width)
+			&& check_walls(grid, x + 1, y, height, width)
+			&& check_walls(grid, x, y + 1, height, width));
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   closing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 17:04:11 by kegonza           #+#    #+#             */
-/*   Updated: 2025/12/19 12:31:56 by kegonza          ###   ########.fr       */
+/*   Updated: 2026/01/24 16:43:30 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	draw_rect(t_img *img, int x, int y, int w, int h, int color)
 		j++;
 	}
 }
+
 void	draw_exit_confirm(t_game *game)
 {
 	int	box_w;

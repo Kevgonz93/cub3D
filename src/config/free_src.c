@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:52:28 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/17 13:14:27 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/24 16:52:16 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	free_config(t_game *game)
 	if (game->config.map)
 	{
 		free_map(game->config.map);
-
 		game->config.map = NULL;
 	}
 }
@@ -65,7 +64,7 @@ int	free_game(t_game *game, int ret)
 	if (game->mlx)
 	{
 		mlx_destroy_display(game->mlx);
-		free(game->mlx); // revisarlo en Linux (posible doble free) - esto sí tiene que estar en linux con su función destroy_display
+		free(game->mlx);
 		game->mlx = NULL;
 	}
 	return (ret);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   buffer.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/24 16:02:18 by akwadran          #+#    #+#             */
+/*   Updated: 2026/01/24 16:14:35 by akwadran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/src.h"
 
 static int	get_n_lines(char *file)
@@ -31,7 +43,6 @@ static void	fill_out_buffer(char **buffer, int fd)
 		buffer[i] = get_next_line(fd);
 		if (!buffer[i])
 			break ;
-		//printf("%s", buffer[i]); // QUITAR
 		i++;
 	}
 }

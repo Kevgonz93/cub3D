@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dda.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/24 16:01:18 by akwadran          #+#    #+#             */
+/*   Updated: 2026/01/24 16:13:20 by akwadran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/src.h"
 
 	// Calcula step_x/step_y (dirección en el mapa) y side_dist_x/side_dist_y
@@ -74,11 +86,11 @@ static int	is_wall_at(t_game *game, int mx, int my)
 
 static void	pre_dda(t_game *game, double ray_angle, t_dda *dda)
 {
-	dda->ray_dir_x = cos(ray_angle);
-	dda->ray_dir_y = sin(ray_angle);
 	double	pos_x;
 	double	pos_y;
 
+	dda->ray_dir_x = cos(ray_angle);
+	dda->ray_dir_y = sin(ray_angle);
 	pos_x = game->player.x / (double)TILE_SIZE;
 	pos_y = game->player.y / (double)TILE_SIZE;
 	dda->map_x = (int)pos_x;
@@ -96,23 +108,29 @@ static void	pre_dda(t_game *game, double ray_angle, t_dda *dda)
 
 // el dda es un algoritmo que permite trazar un rayo en un mapa de cuadrícula
 // y determinar qué celdas de la cuadrícula atraviesa el rayo.
-// se utiliza para detectar colisiones con paredes en juegos 3D basados en raycasting.
+// se utiliza para detectar colisiones con paredes en juegos 3D basados en
+// raycasting.
 // el algoritmo funciona avanzando paso a paso a lo largo del rayo
-// y calculando las distancias a los próximos lados de las celdas en ambas direcciones (x e y).
+// y calculando las distancias a los próximos lados de las celdas en ambas 
+// direcciones (x e y).
 
 // esta función implementa el bucle principal del algoritmo DDA
 // que continúa hasta que el rayo golpea una pared.
 // en cada iteración del bucle, se compara la distancia al próximo lado en x
 // con la distancia al próximo lado en y.
-// el lado con la distancia más corta determina la dirección en la que se avanza el rayo.
-// si el lado x es más cercano, se actualiza la distancia al próximo lado en x y se avanza en la dirección x.
-// si el lado y es más cercano, se actualiza la distancia al próximo lado en y y se avanza en la dirección y.
-// después de avanzar, se verifica si la celda actual del mapa contiene una pared ('1').
-// si es así, se marca que se ha golpeado una pared y el bucle termina.
+// el lado con la distancia más corta determina la dirección en la que se 
+// avanza el rayo.
+// si el lado x es más cercano, se actualiza la distancia al próximo lado  
+// en x y se avanza en la dirección x.
+// si el lado y es más cercano, se actualiza la distancia al próximo lado  
+// en y y se avanza en la dirección y.
+// después de avanzar, se verifica si la celda actual del mapa contiene una 
+// pared ('1'). si es así, se marca que se ha golpeado una pared y el bucle 
+// termina.
 
-// el resultado de este proceso es que se determina la celda del mapa donde el rayo golpea una pared
-// y se registra qué lado de la pared fue golpeado (vertical u horizontal).
-
+// el resultado de este proceso es que se determina la celda del mapa donde  
+// el rayo golpea una pared y se registra qué lado de la pared fue golpeado 
+// (vertical u horizontal).
 
 void	run_dda(t_game *game, double ray_angle, t_dda *dda)
 {
