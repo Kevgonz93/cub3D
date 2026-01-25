@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:42:07 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/24 18:48:52 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:21:17 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,9 @@ static int	parse_textures(char **lines, t_game *game, int *map_index)
 			if (get_color(lines[i], game))
 				return (1);
 		}
-		else
-			return (error("Unexpected line: file must contain 4 textures, 2 colors and a map"));
+		else			
+			return (error("Unexpected line: file must contain "
+				"4 textures, 2 colors and a map"));
 	}
 	if (find_map(lines, i, map_index))
 		return (1);
