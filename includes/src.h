@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/25 18:50:24 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:39:25 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 # include "cub3d.h"
 
-typedef struct s_game   t_game;
-typedef struct s_img    t_img;
-typedef struct s_map    t_map;
-typedef struct s_dda    t_dda;
-typedef struct s_config t_config;
-typedef struct s_player t_player;
-typedef struct s_tex    t_tex;
+typedef struct s_game	t_game;
+typedef struct s_img	t_img;
+typedef struct s_map	t_map;
+typedef struct s_dda	t_dda;
+typedef struct s_config	t_config;
+typedef struct s_player	t_player;
+typedef struct s_tex	t_tex;
 
 // ------------------------------------------------------
 // 							UTILS
@@ -119,16 +119,16 @@ int		parse_map(char **lines, t_game *game, int map_index);
 int		validate_map(t_map *map);
 
 // VALIDATE_MAP_EMPTY_LINE.C
-int check_for_empty_lines(char **grid);
+int		check_for_empty_lines(char **grid);
 
 // GRID_PADDED.C
 char	**get_grid_padded(t_map *map);
 
 // TEXTURES_DATA.C
-int    init_textures(t_game *game);
+int		init_textures(t_game *game);
 
 // PLAYER_DATA.C
-int	get_player_data(t_game *game);
+int		get_player_data(t_game *game);
 
 // ------------------------------------------------------
 // 							RENDERING
@@ -151,7 +151,8 @@ int		render_frame(t_game *game);
 void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color);
 
 // TEXTURIZED_WALL.C
-void	draw_wall_column_texturized(t_game *game, int x, double wall_height, t_dda *dda, double dist_hit);
+void	draw_wall_column_texturized(t_game *game, int x, double wall_height,
+			t_dda *dda, double dist_hit);
 
 // ------------------------------------------------------
 // 							DEBUG

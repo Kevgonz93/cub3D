@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:01:11 by akwadran          #+#    #+#             */
-/*   Updated: 2026/01/24 16:07:15 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:46:15 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,50 +42,48 @@ static double	find_texture_hit_coordinate(t_game *game,
 	return (wall_x);
 }
 
+static void	draw_loop(t_column *col, t_tex *texture, t_game *game, int x)
+{
+	unsigned int	pxl_color;
+
+	while (col->y <= col->draw_end)
+	{
+		col->tex_y = (int)col->tex_pos;
+		if (col->tex_y < 0)
+			col->tex_y = 0;
+		if (col->tex_y >= (int)texture->height)
+			col->tex_y = (int)texture->height - 1;
+		pxl_color = *(unsigned int *)(texture->addr
+				+ (col->tex_y * texture->line_len)
+				+ (col->tex_x * texture->bpp / 8));
+		my_mlx_pixel_put(&game->img, x, col->y, pxl_color);
+		col->tex_pos += col->step;
+		col->y++;
+	}
+}
+
 void	draw_wall_column_texturized(t_game *game, int x, double wall_height,
 		t_dda *dda, double dist_hit)
 {
 	t_tex			*texture;
-	double			wall_x;
-	int				draw_start;
-	int				draw_end;
-	double			step;
-	double			tex_pos;
-	int				y;
-	int				tex_x;
-	int				tex_y;
-	unsigned int	pxl_color;
-	double			start_y;
+	t_column		col;
 
-	start_y = (HEIGHT / 2.0) - (wall_height / 2.0);
-	draw_start = (int)start_y;
-	draw_end = (int)((HEIGHT / 2.0) + (wall_height / 2.0));
-	if (draw_start < 0)
-		draw_start = 0;
-	if (draw_end >= HEIGHT)
-		draw_end = HEIGHT - 1;
+	col.start_y = (HEIGHT / 2.0) - (wall_height / 2.0);
+	col.draw_start = (int)col.start_y;
+	col.draw_end = (int)((HEIGHT / 2.0) + (wall_height / 2.0));
+	if (col.draw_start < 0)
+		col.draw_start = 0;
+	if (col.draw_end >= HEIGHT)
+		col.draw_end = HEIGHT - 1;
 	texture = determine_texture(game, dda);
-	wall_x = find_texture_hit_coordinate(game, dda, dist_hit);
-	tex_x = (int)(wall_x * (double)texture->width);
+	col.wall_x = find_texture_hit_coordinate(game, dda, dist_hit);
+	col.tex_x = (int)(col.wall_x * (double)texture->width);
 	if (dda->side == 0 && dda->ray_dir_x > 0)
-		tex_x = texture->width - tex_x - 1;
+		col.tex_x = texture->width - col.tex_x - 1;
 	if (dda->side == 1 && dda->ray_dir_y < 0)
-		tex_x = texture->width - tex_x - 1;
-	step = (double)texture->height / wall_height;
-	tex_pos = (draw_start - start_y) * step;
-	y = draw_start;
-	while (y <= draw_end)
-	{
-		tex_y = (int)tex_pos;
-		if (tex_y < 0)
-			tex_y = 0;
-		if (tex_y >= (int)texture->height)
-			tex_y = (int)texture->height - 1;
-		pxl_color = *(unsigned int *)(texture->addr
-				+ (tex_y * texture->line_len)
-				+ (tex_x * texture->bpp / 8));
-		my_mlx_pixel_put(&game->img, x, y, pxl_color);
-		tex_pos += step;
-		y++;
-	}
+		col.tex_x = texture->width - col.tex_x - 1;
+	col.step = (double)texture->height / wall_height;
+	col.tex_pos = (col.draw_start - col.start_y) * col.step;
+	col.y = col.draw_start;
+	draw_loop(&col, texture, game, x);
 }

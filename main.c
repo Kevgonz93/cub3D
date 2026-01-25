@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:13:18 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/10 21:00:25 by kegonza          ###   ########.fr       */
+/*   Updated: 2026/01/25 21:50:08 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,91 +56,32 @@ static void	init_hooks(t_game *game)
 	mlx_hook(game->win, 3, 1L << 1, key_release, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_loop_hook(game->mlx, render_frame, game);
-	// render_frame(game);
-	//mlx_loop_hook(game->mlx, render_frame, game);
-	// mlx_loop_hook(game->mlx, render_2d_map, game); // QUITAR
-}
-
-static void	test_set_map(t_game *game)
-{
-	static t_map	map;
-
-	map.height = 6;
-	map.width = 12;
-	map.grid = (char **)malloc(sizeof(char *) * (map.height + 1));
-	if (!map.grid)
-		return ;
-	map.grid[0] = ft_strdup("111111111111");
-	map.grid[1] = ft_strdup("100000000001");
-	map.grid[2] = ft_strdup("101010010101");
-	map.grid[3] = ft_strdup("101010010101");
-	map.grid[4] = ft_strdup("100000000001");
-	map.grid[5] = ft_strdup("111111111111");
-	map.grid[6] = NULL;
-	game->config.map = &map;
-}
-
-void	test_config(t_game *game)
-{
-	if (is_cub("test.cub"))
-		printf("is_cub works for tests!\n");
-	// 1) Config “a mano”
-	game->config.fov = 60.0 * PI / 180.0;   // radianes
-	game->config.player_angle = 0.0;
-	game->config.floor_color = 0x333333;
-	game->config.ceil_color = 0x99AADD;
-	game->config.no.path = NULL;
-	game->config.so.path = NULL;
-	game->config.we.path = NULL;
-	game->config.ea.path = NULL;
-	// 2) Mapa “a mano”
-	test_set_map(game);
-	// 3) Jugador “a mano” (en una celda '0')
-	game->player.x = 2.5;
-	game->player.y = 2.5;
-	// Si tu código usa dir_x/dir_y en algún sitio, déjalos coherentes:
-	game->player.dir_x = cos(game->config.player_angle);
-	game->player.dir_y = sin(game->config.player_angle);
-	// No hace falta plane_x/plane_y en tu enfoque actual
-	game->player.plane_x = 0.0;
-	game->player.plane_y = 0.0;
 }
 
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	(void)argv;
-	(void)argc;
 	printf("validating arguments...\n");
-	// 	1. Validar argumentos
 	if (argc != 2)
 		return (error("Usage: ./cub3D <map.cub>"));
 	if (!is_cub(argv[1]))
 		return (error("Map must have .cub format"));
 	printf("initializing game...\n");
-	//   2. Inicializar estructura
 	init_game(&game);
 	printf("parsing file...\n");
-	//   3. Parsear archivo .cub
 	if (parse_file(argv[1], &game))
 		return (free_game(&game, 1));
-	//test_main(&game);
 	printf("initializing MLX...\n");
-	//	4. Inicializar MLX
 	if (init_mlx(&game) != 0)
 		return (1);
 	printf("loading textures...\n");
-	//  5. Cargar texturas
 	if (init_textures(&game))
 		return (free_game(&game, 1));
 	printf("registering hooks...\n");
-	//   5. Registrar hooks
 	init_hooks(&game);
 	printf("starting MLX loop...\n");
-	//   6. Loop de MLX
 	mlx_loop(game.mlx);
 	printf("exiting game...\n");
-	//   7. Free and exit
 	return (free_game(&game, 0));
 }

@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:02:13 by akwadran          #+#    #+#             */
-/*   Updated: 2026/01/24 18:01:46 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:45:09 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,10 @@ int	get_color(char *line, t_game *game)
 	int				i;
 	int				color_index;
 	unsigned int	trgb;
-	//bool			check;
 
 	if (!line || !game)
 		return (1);
 	i = 1;
-	//check = true;
 	while (ft_isspace(line[i]))
 		i++;
 	color_index = i;

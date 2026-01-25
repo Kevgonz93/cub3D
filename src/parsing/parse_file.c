@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:42:07 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/25 20:21:17 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:45:37 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,10 @@ int	find_map(char **lines, int i, int *map_index)
 		if (!strcmp(lines[i], "\n"))
 			continue ;
 		else if (is_map_line(lines[i]))
-			break;
+			break ;
 		else
-		{
-			printf("Error\nUnexpected line: file must contain 4 textures,");
-			printf("2 colors and a map as a last element\n");
-			return (1);
-		}
+			return (error("Unexpected line: file must contain "
+					"4 textures, 2 colors and a map"));
 	}
 	*map_index = i;
 	return (0);
@@ -80,9 +77,9 @@ static int	parse_textures(char **lines, t_game *game, int *map_index)
 			if (get_color(lines[i], game))
 				return (1);
 		}
-		else			
+		else
 			return (error("Unexpected line: file must contain "
-				"4 textures, 2 colors and a map"));
+					"4 textures, 2 colors and a map"));
 	}
 	if (find_map(lines, i, map_index))
 		return (1);
@@ -107,10 +104,8 @@ int	parse_file(char *file, t_game *game)
 		free_array(buffer);
 		return (1);
 	}
-	print_config(&game->config); // QUITAR
 	free_array(buffer);
 	if (get_player_data(game))
 		return (1);
-	print_player_data(game); // QUITAR
 	return (0);
 }

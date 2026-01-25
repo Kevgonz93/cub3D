@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/24 17:53:54 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:36:10 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 #  define HEIGHT 700
 #  define TILE 10 // PARA DEBUGEAR, QUITAR LUEGO
 # elif defined(__linux__)
-#  define WIDTH  1000 // 800
-#  define HEIGHT 700  // 500
+#  define WIDTH  1500 // 800
+#  define HEIGHT 1050  // 500
 #  define TILE 8 // PARA DEBUGEAR, QUITAR LUEGO
 # endif
 // Variables matemáticas
@@ -87,15 +87,20 @@
 // ------------------------------------------------------
 
 // Estructura para dibujear la línea texturizada
-typedef struct s_line
+typedef struct s_column
 {
-	int	screen_x;	// X de la pantalla
-	int	screen_y;	// Y de la pantalla
-	int	start_y;	// punto de partida en la Y para dibujar la pared
-	int	end_y;		// punto final de la pared en la Y
-	int	tex_x;		// coordenada X de la textura
-	int	tex_y;		// coordenada Y de la textura
-}	t_line;
+	int				x;
+	double			wall_height;
+	double			wall_x;
+	int				draw_start;
+	int				draw_end;
+	double			step;
+	double			tex_pos;
+	int				y;
+	int				tex_x;
+	int				tex_y;
+	double			start_y;
+}	t_column;
 
 // Estructura para el algoritmo DDA
 typedef struct s_dda
@@ -143,7 +148,7 @@ typedef struct s_map
 	int		height;			// Alto del mapa
 }	t_map;
 
-typedef struct	s_tex
+typedef struct s_tex
 {
 	char	*path;
 	void	*img;

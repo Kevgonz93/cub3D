@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:01:28 by akwadran          #+#    #+#             */
-/*   Updated: 2026/01/25 20:07:37 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:42:39 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	find_player(char *line)
 	return (player);
 }
 
-static int	check_walls(char **grid, int x, int y, t_map *map) // int height, int width)
+static int	check_walls(char **grid, int x, int y, t_map *map)
 {
 	int	height;
 	int	width;
@@ -102,7 +102,7 @@ int	validate_map(t_map *map)
 	grid_padded = get_grid_padded(map);
 	if (!grid_padded)
 		return (error("Grid padded: Malloc failed"));
-	if (!check_walls(grid_padded, 0, 0, map)) // map->height + 2, map->width + 2))
+	if (!check_walls(grid_padded, 0, 0, map))
 	{
 		free_array(grid_padded);
 		return (error("Map must be closed with walls"));
