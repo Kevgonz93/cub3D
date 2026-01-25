@@ -33,11 +33,15 @@ static double	get_angle(t_game *game, int x)
 	return (initial_fov_angle + where_in_fov);
 }
 
-static double	get_height_wall(double dist_corrected, t_game *game)
+static double	get_height_wall(double raw_dist, double ray_angle, t_game *game)
 {
+	double	dist_corrected;
 	double	plane_dist;
 	double	wall_height;
 
+	dist_corrected = raw_dist * cos(ray_angle - game->config.player_angle);
+	if (dist_corrected < 0.00001)
+		dist_corrected = 0.00001;
 	plane_dist = (WIDTH / 2.0) / tan(game->config.fov / 2.0);
 	wall_height = (1.0 / dist_corrected) * plane_dist;
 	return (wall_height);
@@ -87,7 +91,6 @@ void	render_walls(t_game *game)
 	double	ray_angle;
 	t_dda	dda;
 	double	raw_dist;
-	double	correct_dist;
 	double	wall_height;
 
 	x = 0;
@@ -96,10 +99,7 @@ void	render_walls(t_game *game)
 		ray_angle = get_angle(game, x);
 		run_dda(game, ray_angle, &dda);
 		raw_dist = get_dist_hit_raw(game, &dda);
-		correct_dist = raw_dist * cos(ray_angle - game->config.player_angle);
-		if (correct_dist < 0.00001)
-			correct_dist = 0.00001;
-		wall_height = get_height_wall(correct_dist, game);
+		wall_height = get_height_wall(raw_dist, ray_angle, game);
 		draw_wall_column_texturized(game, x, wall_height, &dda, raw_dist);
 		x++;
 	}

@@ -86,12 +86,12 @@ int	get_color(char *line, t_game *game)
 	int				i;
 	int				color_index;
 	unsigned int	trgb;
-	bool			check;
+	//bool			check;
 
 	if (!line || !game)
 		return (1);
 	i = 1;
-	check = true;
+	//check = true;
 	while (ft_isspace(line[i]))
 		i++;
 	color_index = i;
