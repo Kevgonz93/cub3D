@@ -40,11 +40,13 @@ RM   := rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(MAKE) -C $(MLX_DIR)
+$(NAME): build $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(X11_FLAGS) $(MLX_FLAGS) -o $(NAME)
 # vv ELIMINAR ANTES DE ENTREGAR vv
 	make clean
+
+build:
+	$(MAKE) -C $(MLX_DIR)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

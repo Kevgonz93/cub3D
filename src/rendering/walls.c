@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:01:06 by akwadran          #+#    #+#             */
-/*   Updated: 2026/01/24 16:01:08 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:46:54 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ static double	get_height_wall(double raw_dist, double ray_angle, t_game *game)
 
 void	draw_wall_column(t_game *game, int x, double wall_height, t_dda *dda)
 {
-	(void)dda;
 	double	start;
 	double	end;
 	int		y;
 
+	(void)dda;
 	start = (HEIGHT / 2.0) - (wall_height / 2.0);
 	if (start < 0)
 		start = 0;

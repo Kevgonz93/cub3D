@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:12:43 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/24 16:54:03 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:40:35 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,14 @@ void	init_game(t_game *game)
 
 	game->mlx = NULL;
 	game->win = NULL;
-	// T_IMG
 	init_img(&game->img);
-	// T_CONFIG
 	init_config(&game->config);
-	// T_PLAYER
 	init_player(&game->player);
-	// KEYS
 	key = 0;
 	while (key < 65364)
 	{
 		game->keys[key] = 0;
 		key++;
 	}
-	// T_EXIT
 	init_exit_conf(&game->exit_status);
 }

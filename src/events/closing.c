@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 17:04:11 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/24 16:43:30 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:43:40 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ void	draw_exit_confirm(t_game *game)
 	box_h = game->exit_status.height;
 	x = game->exit_status.x;
 	y = game->exit_status.y;
-	// 1) pinta un panel sólido sobre TU IMAGEN (framebuffer)
 	draw_rect(&game->img, x, y, box_w, box_h, 0x202020);
-	// borde simple (opcional)
 	draw_rect(&game->img, x, y, box_w, 2, 0xFFFFFF);
 	draw_rect(&game->img, x, y + box_h - 2, box_w, 2, 0xFFFFFF);
 	draw_rect(&game->img, x, y, 2, box_h, 0xFFFFFF);
@@ -58,19 +56,6 @@ void	draw_exit_confirm_text(t_game *game)
 	mlx_string_put(game->mlx, game->win, game->exit_status.x + 30,
 		game->exit_status.y + 75, 0xFFFFFF,
 		"(Y)es   /   (N)o   (Esc = cancel)");
-	// int	box_w;
-	// int	box_h;
-	// int	x;
-	// int	y;
-
-	// box_w = 420;
-	// box_h = 120;
-	// x = (WIDTH - box_w) / 2;
-	// y = (HEIGHT - box_h) / 2;
-	// mlx_string_put(game->mlx, game->win, x + 30, y + 45, 0xFFFFFF,
-	// 	"Exit game?");
-	// mlx_string_put(game->mlx, game->win, x + 30, y + 75, 0xFFFFFF,
-	// 	"(Y)es   /   (N)o   (Esc = cancel)");
 }
 
 int	game_exit(t_game *game, int status)
