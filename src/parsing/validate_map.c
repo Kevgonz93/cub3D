@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:01:28 by akwadran          #+#    #+#             */
-/*   Updated: 2026/01/24 18:55:50 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/25 18:59:33 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 static int	validate_chars(char *line)
 {
 	int		i;
-	bool	empty;
+	//bool	empty;
 
 	//printf("checkoing line %s\n", line);
-	empty = true;
+	/*empty = true;
 	i = 0;
 	while (line[i])
 	{
@@ -27,7 +27,7 @@ static int	validate_chars(char *line)
 		i++;
 	}
 	if (empty)
-		return (error("Map contains an empty line"));
+		return (error("Map contains an empty line"));*/
 	i = 0;
 	while (line[i])
 	{
@@ -83,6 +83,8 @@ int	validate_map(t_map *map)
 
 	player = 0;
 	i = 0;
+	if (check_for_empty_lines(map->grid))
+		return (1);
 	while (map->grid[i])
 	{
 		if (validate_chars(map->grid[i]))
@@ -101,5 +103,7 @@ int	validate_map(t_map *map)
 		return (error("Map must be closed with walls"));
 	}
 	free_array(grid_padded);
+	if (check_for_empty_lines(map->grid))
+		return (1);
 	return (0);
 }
