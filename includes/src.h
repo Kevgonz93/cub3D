@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/24 16:54:53 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/01/25 18:50:24 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,9 @@ int		parse_map(char **lines, t_game *game, int map_index);
 
 // VALIDATE_MAP.C
 int		validate_map(t_map *map);
+
+// VALIDATE_MAP_EMPTY_LINE.C
+int check_for_empty_lines(char **grid);
 
 // GRID_PADDED.C
 char	**get_grid_padded(t_map *map);
