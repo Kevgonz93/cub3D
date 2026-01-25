@@ -1,11 +1,22 @@
-This project has been created as part of the 42 curriculum by <akwadran>[, <kegonzal>[]].
+This project has been created as part of the 42 curriculum by akwadran, kegonzal.
 
 # DESPCRIPTION
+The project CUB3D aims to create a game engine in C using raycasting and the MiniLibX library.
 
 # INSTRUCTIONS
+After compiling, execute the cub3d file selecting one of the maps from the .maps directory
+```bash
+make
+./cub3d maps/map.cub
+```
 
 # RESOURCES
+https://lodev.org/cgtutor/raycasting.html
+https://www.youtube.com/watch?v=NbSee-XM7WA
+https://aaaa.sh/creatures/dda-algorithm-interactive/
+https://hackmd.io/@nszl/H1LXByIE2
 
+The IA was used for explaining the math concepts needed for the project and for getting ideas of how to test it.
 
 
 
