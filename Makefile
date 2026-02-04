@@ -1,7 +1,7 @@
 NAME    := cub3D
 
 CC      := cc
-CFLAGS  := -Wall -Wextra -Werror -g3 # QUITAR -g3
+CFLAGS  := -Wall -Wextra -Werror
 
 OS      := $(shell uname)
 
@@ -42,8 +42,6 @@ all: $(NAME)
 
 $(NAME): build $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(X11_FLAGS) $(MLX_FLAGS) -o $(NAME)
-# vv ELIMINAR ANTES DE ENTREGAR vv
-	make clean
 
 build:
 	$(MAKE) -C $(MLX_DIR)

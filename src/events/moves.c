@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:02:24 by akwadran          #+#    #+#             */
-/*   Updated: 2026/01/24 16:47:10 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 18:32:55 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,6 @@ void	move_player(t_game *game)
 
 	dx = 0.0f;
 	dy = 0.0f;
-	printf("pos=(%.2f,%.2f) cell=(%d,%d)\n",
-		game->player.x, game->player.y,
-		(int)(game->player.x / TILE_SIZE),
-		(int)(game->player.y / TILE_SIZE));
 	add_forback_moves(game, &dx, &dy);
 	add_side_moves(game, &dx, &dy);
 	if (dx != 0.0f || dy != 0.0f)
