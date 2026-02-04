@@ -1,25 +1,88 @@
-This project has been created as part of the 42 curriculum by akwadran, kegonzal.
+# cub3d - 42 Project
 
-# DESPCRIPTION
-The project CUB3D aims to create a game engine in C using raycasting and the MiniLibX library.
+---
 
-# INSTRUCTIONS
-After compiling, execute the cub3d file selecting one of the maps from the .maps directory
+## 📜 Description
+
+**cub3D** project from School 42 (Wolfenstein-style 3D raycasting).
+
+---
+
+## 📋 Requirements
+
+To compile and run this project, you need:
+
+A UNIX system (macOS or Linux)
+Make and a C-compatible compiler (gcc or clang)
+On macOS: The OpenGL and AppKit frameworks (included by default in the system)
+On Linux: The X11 and Xext libraries
+
+---
+
+## Objective
+
+- Implement a raycasting engine in C using the MiniLibX library.
+- Render a 2D map in a pseudo-3D first-person view.
+- Manage:
+  - Player movements
+  - Collisions with walls
+  - Textures
+  - Minimap (optional)
+
+## 🛠️ How to Compile and Run
+
+1. Clone the repository
+
 ```bash
-make
-./cub3d maps/map.cub
+  git clone https://github.com/Kevgonz93/cub3D
+  cd cub3d
 ```
 
-# RESOURCES
-https://lodev.org/cgtutor/raycasting.html
-https://www.youtube.com/watch?v=NbSee-XM7WA
-https://aaaa.sh/creatures/dda-algorithm-interactive/
-https://hackmd.io/@nszl/H1LXByIE2
+2. Compile the project
 
-The IA was used for explaining the math concepts needed for the project and for getting ideas of how to test it.
+```bash
+  make
+```
 
+3. Run the program
 
+```bash
+  ./cub3D mapa.cub
+```
 
+---
+
+## 🚀 Features
+
+### Makefile
+
+The Makefile for this project is designed to compile on both MacOS and Linux, as appropriate.
+
+### Movements
+
+- Arrows: Left and right will rotate the view in the corresponding direction.
+- Letters: “A,S,D,W” will move the view in the corresponding direction.
+- Keys: “Esc” will open a menu to confirm exiting the game.
+
+## Project Structure
+
+📦 cub3d
+├── 📂 debug            # Auxiliary functions for debugging purposes.
+├── 📂 includes         # Headers used in the project.
+├── 📂 maps             # Files with default maps.
+├── 📂 minilibx         # Unzipped minilibx.
+├── 📂 src              # Useful functions for the app.
+    ├── 📂 config       # Configuration functions for main structures for app development.
+    ├── 📂 events       # Event execution functions.
+    ├── 📂 parsing      # Map parsing functions.
+    ├── 📂 rendering    # Rendering functions.
+    └── 📂 utils        # Utility functions (libft).
+├── 📂 textures         # Files with default textures.
+├── main.c              # Main file, includes main.
+├── Makefile            # Makefile for compiling the project.
+└── READEME.md          # This document
+
+---
 
 # cub3d - 42 Project
 
@@ -104,3 +167,13 @@ El Makefile de este proyecto está hecho para poder compilar tanto en MacOS y Li
 ├── main.c					# Fichero principal, incluye main.
 ├── Makefile				# Makefile para compilar el proyecto.
 └── READEME.md				# Este documento
+
+## Recursos
+
+https://lodev.org/cgtutor/raycasting.html
+https://www.youtube.com/watch?v=NbSee-XM7WA
+https://aaaa.sh/creatures/dda-algorithm-interactive/
+https://hackmd.io/@nszl/H1LXByIE2
+
+The IA was used for explaining the math concepts needed for the project and for getting ideas of how to test it.
+
