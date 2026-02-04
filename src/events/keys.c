@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 17:03:45 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/24 16:48:32 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 18:29:17 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	key_press(int keycode, t_game *game)
 {
 	bool	exit_status;
 
-	printf("Key pressed: %d\n", keycode); // QUITAR
 	while (1)
 	{
 		exit_status = game->exit_status.confirm_exit;

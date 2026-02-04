@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:01:11 by akwadran          #+#    #+#             */
-/*   Updated: 2026/01/25 21:46:15 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 18:24:06 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	draw_loop(t_column *col, t_tex *texture, t_game *game, int x)
 }
 
 void	draw_wall_column_texturized(t_game *game, int x, double wall_height,
-		t_dda *dda, double dist_hit)
+		t_dda *dda)
 {
 	t_tex			*texture;
 	t_column		col;
@@ -76,7 +76,7 @@ void	draw_wall_column_texturized(t_game *game, int x, double wall_height,
 	if (col.draw_end >= HEIGHT)
 		col.draw_end = HEIGHT - 1;
 	texture = determine_texture(game, dda);
-	col.wall_x = find_texture_hit_coordinate(game, dda, dist_hit);
+	col.wall_x = find_texture_hit_coordinate(game, dda, dda->raw_dist);
 	col.tex_x = (int)(col.wall_x * (double)texture->width);
 	if (dda->side == 0 && dda->ray_dir_x > 0)
 		col.tex_x = texture->width - col.tex_x - 1;

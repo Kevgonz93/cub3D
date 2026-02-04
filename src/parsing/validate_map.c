@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:01:28 by akwadran          #+#    #+#             */
-/*   Updated: 2026/01/25 20:42:39 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:42:38 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,8 @@ static int	check_chars_and_player(t_map *map)
 
 int	validate_map(t_map *map)
 {
-	int		player;
-	int		i;
 	char	**grid_padded;
 
-	player = 0;
-	i = 0;
 	if (check_for_empty_lines(map->grid))
 		return (1);
 	if (check_chars_and_player(map))

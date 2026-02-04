@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/25 21:36:10 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 18:31:56 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@
 # ifdef __APPLE__
 #  define WIDTH  1000
 #  define HEIGHT 700
-#  define TILE 10 // PARA DEBUGEAR, QUITAR LUEGO
+#  define TILE 10
 # elif defined(__linux__)
 #  define WIDTH  1500 // 800
 #  define HEIGHT 1050  // 500
-#  define TILE 8 // PARA DEBUGEAR, QUITAR LUEGO
+#  define TILE 8
 # endif
 // Variables matemáticas
 # define PI		3.14159265358979323846
@@ -117,6 +117,7 @@ typedef struct s_dda
 	int		step_y;			// Paso en Y
 	int		hit;			// ¿Se ha golpeado una pared?
 	int		side;			// ¿Se ha golpeado una pared vertical u horizontal?
+	double	raw_dist;
 }	t_dda;
 
 // Imagen generada con mlx_new_image

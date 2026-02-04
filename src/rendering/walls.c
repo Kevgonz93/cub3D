@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:01:06 by akwadran          #+#    #+#             */
-/*   Updated: 2026/01/25 21:46:54 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 18:25:13 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void	render_walls(t_game *game)
 	int		x;
 	double	ray_angle;
 	t_dda	dda;
-	double	raw_dist;
 	double	wall_height;
 
 	x = 0;
@@ -98,9 +97,9 @@ void	render_walls(t_game *game)
 	{
 		ray_angle = get_angle(game, x);
 		run_dda(game, ray_angle, &dda);
-		raw_dist = get_dist_hit_raw(game, &dda);
-		wall_height = get_height_wall(raw_dist, ray_angle, game);
-		draw_wall_column_texturized(game, x, wall_height, &dda, raw_dist);
+		dda.raw_dist = get_dist_hit_raw(game, &dda);
+		wall_height = get_height_wall(dda.raw_dist, ray_angle, game);
+		draw_wall_column_texturized(game, x, wall_height, &dda);
 		x++;
 	}
 }

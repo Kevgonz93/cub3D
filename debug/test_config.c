@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_config.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/04 17:34:34 by kegonza           #+#    #+#             */
+/*   Updated: 2026/02/04 17:34:35 by kegonza          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 #include "../../includes/src.h"
 
@@ -37,8 +49,7 @@ void	test_config(t_game *game)
 {
 	if (is_cub("test.cub"))
 		printf("is_cub works for tests!\n");
-	// 1) Config “a mano”
-	game->config.fov = 60.0 * PI / 180.0;   // radianes
+	game->config.fov = 60.0 * PI / 180.0;
 	game->config.player_angle = 0.0;
 	game->config.floor_color = 0x333333;
 	game->config.ceil_color = 0x99AADD;
@@ -46,15 +57,11 @@ void	test_config(t_game *game)
 	game->config.so.path = NULL;
 	game->config.we.path = NULL;
 	game->config.ea.path = NULL;
-	// 2) Mapa “a mano”
 	test_set_map(game);
-	// 3) Jugador “a mano” (en una celda '0')
 	game->player.x = 2.5;
 	game->player.y = 2.5;
-	// Si tu código usa dir_x/dir_y en algún sitio, déjalos coherentes:
 	game->player.dir_x = cos(game->config.player_angle);
 	game->player.dir_y = sin(game->config.player_angle);
-	// No hace falta plane_x/plane_y en tu enfoque actual
 	game->player.plane_x = 0.0;
 	game->player.plane_y = 0.0;
 }
