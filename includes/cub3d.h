@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:14:41 by kegonza           #+#    #+#             */
-/*   Updated: 2026/02/04 18:31:56 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 18:26:23 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,5 +204,16 @@ typedef struct s_game
 	//int			keys[256];		// Estado de las teclas
 	int			keys[65364];		// Estado de las teclas
 }	t_game;
+
+// estructura auxiliar de dibujo
+
+typedef struct s_draw
+{
+	int	x;
+	int	y;
+	int	w;
+	int	h;
+	int	color;
+}	t_draw;
 
 #endif

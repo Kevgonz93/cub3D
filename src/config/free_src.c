@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   free_src.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:52:28 by kegonza           #+#    #+#             */
 /*   Updated: 2026/02/04 18:26:21 by akwadran         ###   ########.fr       */
