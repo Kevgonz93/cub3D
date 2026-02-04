@@ -3,49 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   closing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 17:04:11 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/25 21:43:40 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 18:26:32 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/src.h"
 
-static void	draw_rect(t_img *img, int x, int y, int w, int h, int color)
+static void	draw_rect(t_img *img, t_draw *draw, int border, int color)
 {
 	int	i;
 	int	j;
 
-	j = 0;
-	while (j < h)
+	i = draw->y;
+	while (i < draw->y + draw->h)
 	{
-		i = 0;
-		while (i < w)
+		j = draw->x;
+		while (j < draw->x + draw->w)
 		{
-			my_mlx_pixel_put(img, x + i, y + j, color);
-			i++;
+			if (border)
+			{
+				if (i == draw->y || i == draw->y + draw->h - 1
+					|| j == draw->x || j == draw->x + draw->w - 1)
+					my_mlx_pixel_put(img, j, i, color);
+			}
+			else
+				my_mlx_pixel_put(img, j, i, color);
+			j++;
 		}
-		j++;
+		i++;
 	}
 }
 
 void	draw_exit_confirm(t_game *game)
 {
-	int	box_w;
-	int	box_h;
-	int	x;
-	int	y;
+	t_draw	*draw;
 
-	box_w = game->exit_status.width;
-	box_h = game->exit_status.height;
-	x = game->exit_status.x;
-	y = game->exit_status.y;
-	draw_rect(&game->img, x, y, box_w, box_h, 0x202020);
-	draw_rect(&game->img, x, y, box_w, 2, 0xFFFFFF);
-	draw_rect(&game->img, x, y + box_h - 2, box_w, 2, 0xFFFFFF);
-	draw_rect(&game->img, x, y, 2, box_h, 0xFFFFFF);
-	draw_rect(&game->img, x + box_w - 2, y, 2, box_h, 0xFFFFFF);
+	draw = malloc(sizeof(t_draw));
+	draw->x = game->exit_status.x;
+	draw->y = game->exit_status.y;
+	draw->w = game->exit_status.width;
+	draw->h = game->exit_status.height;
+	draw_rect(&game->img, draw, 0, 0x202020);
+	draw_rect(&game->img, draw, 2, 0xFFFFFF);
+	draw_rect(&game->img, draw, 0, 0x202020);
+	draw_rect(&game->img, draw, 2, 0xFFFFFF);
+	draw_rect(&game->img, draw, 0, 0x202020);
 }
 
 void	draw_exit_confirm_text(t_game *game)
