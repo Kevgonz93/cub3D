@@ -21,14 +21,50 @@ endif
 
 INCLUDES := -I$(MLX_DIR) -Iincludes
 
-SRCS := $(wildcard src/*.c) \
-        $(wildcard src/utils/*.c) \
-        $(wildcard src/rendering/*.c) \
-        $(wildcard src/parsing/*.c) \
-        $(wildcard src/events/*.c) \
-		$(wildcard src/config/*.c) \
-		$(wildcard debug/*.c) \
-        $(wildcard *.c)
+SRC_CONF := src/config/error_handler.c\
+	src/config/free_src.c\
+	src/config/initial_config_settings.c\
+	src/config/inittial_settings.c
+
+SRC_EV := src/events/closing.c\
+	src/events/keys.c\
+	src/events/make_move.c\
+	src/events/moves.c\
+
+SRC_PARS := src/parsing/buffer.c\
+	src/parsing/colors.c\
+	src/parsing/grid_padded.c\
+	src/parsing/parse_file.c\
+	src/parsing/parse_map.c\
+	src/parsing/player_data.c\
+	src/parsing/textures_data.c\
+	src/parsing/textures_path.c\
+	src/parsing/validate_map_empty_line.c\
+	src/parsing/validate_map.c
+
+SRC_REND := src/rendering/background.c\
+	src/rendering/dda.c\
+	src/rendering/render.c\
+	src/rendering/texturized_wall.c\
+	src/rendering/walls.c
+
+SRC_UT := src/utils/free_array.c\
+	src/utils/ft_atoi.c\
+	src/utils/ft_isdigit.c\
+	src/utils/ft_isspace.c\
+	src/utils/ft_split.c\
+	src/utils/ft_strcmp.c\
+	src/utils/ft_strdup.c\
+	src/utils/ft_strjoin.c\
+	src/utils/ft_strlcpy.c\
+	src/utils/ft_strlen.c\
+	src/utils/ft_strncmp.c\
+	src/utils/ft_substr.c\
+	src/utils/get_next_line.c
+
+SRC := main.c
+
+SRCS := $(SRC) $(SRC_UT) $(SRC_REND) $(SRC_PARS) $(SRC_EV) $(SRC_CONF)
 
 OBJS := $(SRCS:.c=.o)
 

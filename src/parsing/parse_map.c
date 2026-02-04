@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:02:01 by akwadran          #+#    #+#             */
-/*   Updated: 2026/01/25 20:13:41 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 19:13:26 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int	parse_map(char **buffer, t_game *game, int map_index)
 		return (free(map), 1);
 	if (get_grid(buffer, map, map_index))
 		return (free(map), 1);
-	print_array(map->grid);
 	if (validate_map(map))
 	{
 		free_array(map->grid);

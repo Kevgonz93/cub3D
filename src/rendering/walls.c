@@ -6,20 +6,11 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:01:06 by akwadran          #+#    #+#             */
-/*   Updated: 2026/02/04 18:25:13 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 19:17:36 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/src.h"
-
-// Devuelve el ángulo del rayo para la columna x.
-// 1) player_angle: ángulo de la dirección del jugador.
-// 2) initial_fov_angle: borde izquierdo del FOV
-//    (ángulo del jugador - FOV/2).
-// 3) proportion_of_screen: mapea x al rango [0, 1) en la pantalla.
-// 4) where_in_fov: desplazamiento angular dentro del FOV según x.
-// El resultado es el ángulo concreto del rayo que pasa por la
-// columna x de la pantalla.
 
 static double	get_angle(t_game *game, int x)
 {

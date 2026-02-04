@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:26:02 by kegonza           #+#    #+#             */
-/*   Updated: 2026/02/04 18:24:30 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 19:13:46 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,14 +153,5 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color);
 // TEXTURIZED_WALL.C
 void	draw_wall_column_texturized(t_game *game, int x, double wall_height,
 			t_dda *dda);
-
-// ------------------------------------------------------
-// 							DEBUG
-// ------------------------------------------------------
-
-void	print_config(t_config *config);
-void	print_array(char **array);
-int		render_2d_map(t_game *game);
-void	print_player_data(t_game *game);
 
 #endif
