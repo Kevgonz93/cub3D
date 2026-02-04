@@ -21,9 +21,26 @@ The IA was used for explaining the math concepts needed for the project and for 
 
 
 
-# cub3d
+# cub3d - 42 Project
+
+---
+
+## 📜 Descripción
 
 Proyecto **cub3D** de la escuela 42 (raycasting en 3D estilo Wolfenstein).
+
+---
+
+## 📋 Requisitos
+
+Para compilar y ejecutar este proyecto, necesitas:
+
+Un sistema UNIX (macOS o Linux)
+Make y un compilador compatible con C (gcc o clang)
+En macOS: Los frameworks OpenGL y AppKit (incluidos por defecto en el sistema)
+En Linux: Las bibliotecas X11 y Xext
+
+---
 
 ## Objetivo
 
@@ -35,9 +52,55 @@ Proyecto **cub3D** de la escuela 42 (raycasting en 3D estilo Wolfenstein).
   - Texturas
   - Minimapa (opcional)
 
-## Compilación
+## 🛠️ Cómo Compilar y Ejecutar
+
+1. Clonar el repositorio
 
 ```bash
-make
-./cub3D mapa.cub
+  git clone https://github.com/Kevgonz93/cub3D
+  cd cub3d
 ```
+
+2. Compilar el proyecto
+
+```bash
+  make
+```
+
+3. Ejecutar el programa
+
+```bash
+  ./cub3D mapa.cub
+```
+
+---
+
+## 🚀 Características
+
+### Makefile
+
+El Makefile de este proyecto está hecho para poder compilar tanto en MacOS y Linux, según corresponda.
+
+### Movimientos
+
+- Flechas: Izquierda y derecha girarán la vista en el sentido que corresponda.
+- Letras : "A,S,D,W" moverán la visa hacia el sentido que corresponda.
+- Teclas : "Esc" abrirá un menú de confirmación de salida del juego.
+
+## Estructura del Proyecto
+
+📦 cub3d
+├── 📂 debug			# Funciones auxiliares con fines de debug
+├── 📂 includes			# Headers utilizados en el proyecto.
+├── 📂 maps				# Ficheros con mapas predeterminados.
+├── 📂 minilibx			# minilibx descomprimida.
+├── 📂 src				# Funciones útiles para la app.
+    ├── 📂 config		# Funciones de configuración de estructuras principales para el desarrollo de la app.
+    ├── 📂 events		# Funciones de ejecución de eventos.
+    ├── 📂 parsing		# Funciones de parseo del mapa.
+    ├── 📂 rendering	# Funciones de renderizado.
+	└── 📂 utils		# Funciones de utilidad (libft).
+├── 📂 textures			# Ficheros con texturas predeterminadas.
+├── main.c					# Fichero principal, incluye main.
+├── Makefile				# Makefile para compilar el proyecto.
+└── READEME.md				# Este documento

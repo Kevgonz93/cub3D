@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonzal <kegonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:13:18 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/25 21:50:08 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 19:03:46 by kegonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,26 +62,18 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	printf("validating arguments...\n");
 	if (argc != 2)
 		return (error("Usage: ./cub3D <map.cub>"));
 	if (!is_cub(argv[1]))
 		return (error("Map must have .cub format"));
-	printf("initializing game...\n");
 	init_game(&game);
-	printf("parsing file...\n");
 	if (parse_file(argv[1], &game))
 		return (free_game(&game, 1));
-	printf("initializing MLX...\n");
 	if (init_mlx(&game) != 0)
 		return (1);
-	printf("loading textures...\n");
 	if (init_textures(&game))
 		return (free_game(&game, 1));
-	printf("registering hooks...\n");
 	init_hooks(&game);
-	printf("starting MLX loop...\n");
 	mlx_loop(game.mlx);
-	printf("exiting game...\n");
 	return (free_game(&game, 0));
 }
