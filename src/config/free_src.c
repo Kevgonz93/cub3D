@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_src.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:52:28 by kegonza           #+#    #+#             */
-/*   Updated: 2026/01/24 16:52:16 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:43:08 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	free_game(t_game *game, int ret)
 	game->win = NULL;
 	if (game->mlx)
 	{
-		mlx_destroy_display(game->mlx);
+		// mlx_destroy_display(game->mlx);
 		free(game->mlx);
 		game->mlx = NULL;
 	}

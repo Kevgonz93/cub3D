@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kegonza <kegonzal@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:02:32 by akwadran          #+#    #+#             */
-/*   Updated: 2026/01/24 16:02:33 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:55:55 by kegonza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,13 @@ char	*make_padding_line(char *old_line, int new_width)
 	return (new_line);
 }
 
+void	print_error(char *message, char **new_grind)
+{
+	printf("Error: %s\n", message);
+	if (new_grind)
+		free_array(new_grind);
+}
+
 void	paddeding_map(t_game *game)
 {
 	int		old_height;
@@ -70,30 +77,18 @@ void	paddeding_map(t_game *game)
 		return ;
 	new_grid[0] = make_full_line(new_width, '1');
 	if (!new_grid[0])
-	{
-		printf("Error allocating memory for map padding\n");
-		free_array(new_grid);
-		return ;
-	}
+		print_error("Error allocating memory for map padding", new_grid);
 	i = 0;
 	while (++i <= old_height)
 	{
 		new_grid[i] = make_padding_line(game->config.map->grid[i - 1],
 				new_width);
 		if (!new_grid[i])
-		{
-			printf("Error allocating memory for map padding\n");
-			free_array(new_grid);
-			return ;
-		}
+			print_error("Error allocating memory for map padding", new_grid);
 	}
 	new_grid[new_height - 1] = make_full_line(new_width, '1');
 	if (!new_grid[new_height - 1])
-	{
-		printf("Error allocating memory for map padding\n");
-		free_array(new_grid);
-		return ;
-	}
+		print_error("Error allocating memory for map padding", new_grid);
 	new_grid[new_height] = NULL;
 	free_array(game->config.map->grid);
 	game->config.map->grid = new_grid;
